@@ -28,12 +28,21 @@ module.exports = (sequelize, DataTypes) => {
     },
     adNo: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     school: {
       type: DataTypes.STRING,
       allowNull: false
     },
+    docLink: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isExpired: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Job',

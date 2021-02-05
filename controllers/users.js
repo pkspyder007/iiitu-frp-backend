@@ -64,14 +64,18 @@ exports.register = async (req, res) => {
       req.body.password = bcrypt.hashSync(req.body.password, salt);
       req.body.emailToken = uuid();
       const user = await db.User.create(req.body);
-      res.status(201).json({
-        msg: "User created successfully.",
-      });
       sendEmail(
         "pkspyder007@gmail.com",
         "verify email",
-        verifyEmailTemplate(`${req.protocol}://${req.get('host')}/users/verifyEmail/${req.body.email}/${req.body.emailToken}`)
+        verifyEmailTemplate(
+          `${req.protocol}://${req.get("host")}/users/verifyEmail/${
+            req.body.email
+          }/${req.body.emailToken}`
+        )
       );
+      res.status(201).json({
+        msg: "User created successfully.",
+      });
     } catch (error) {
       res.status(400).json({ msg: error.message });
     }
@@ -79,33 +83,41 @@ exports.register = async (req, res) => {
 };
 
 exports.verifyEmail = async (req, res) => {
-    try {
-        const {email, token } = req.params;
+  try {
+    const { email, token } = req.params;
 
-        const user = await db.User.findOne({ where: { email: email } });
+    const user = await db.User.findOne({ where: { email: email } });
 
-        if(!user) {
-            return res.status(400).json({ msg: "Email not found. Invalid request"});
-        }
-
-        if(user.verified) {
-            return res.status(400).json({ msg: "Email already verified"});
-        }
-
-        const result = await db.User.update({ verified: true}, { where: {
-            emailToken: token
-        }});
-
-        if(!result[0]) {
-            return res.status(500).json({ msg: "Could not verify email (INVALID TOKEN). Please contact Administrator"});
-        }
-
-        res.json({
-            msg: "Email verified. You can Login now."
-        });
-
-    } catch (error) {
-        res.status(400).json({ msg: error.message });
+    if (!user) {
+      return res.status(400).json({ msg: "Email not found. Invalid request" });
     }
-}
 
+    if (user.verified) {
+      return res.status(400).json({ msg: "Email already verified" });
+    }
+
+    const result = await db.User.update(
+      { verified: true },
+      {
+        where: {
+          emailToken: token,
+        },
+      }
+    );
+
+    if (!result[0]) {
+      return res
+        .status(500)
+        .json({
+          msg:
+            "Could not verify email (INVALID TOKEN). Please contact Administrator",
+        });
+    }
+
+    res.json({
+      msg: "Email verified. You can Login now.",
+    });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+};

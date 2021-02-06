@@ -26,16 +26,20 @@ exports.createJob = async (req, res) => {
       job,
     });
   } catch (error) {
-    let errors = error.errors.map((e) => e.message);
+    let errors = error.errors.map((e) => ({message: e.message}));
     res.status(500).json({
-      error: errors,
+      errors,
     });
   }
 };
 
 exports.getAll = async (req, res) => {
   try {
-    const jobs = await db.Job.findAll();
+    const jobs = await db.Job.findAll({
+      order: [
+        ['createdAt', "DESC"]
+      ]
+    });
     res.status(201).json({
       jobs,
     });

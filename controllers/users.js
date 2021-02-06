@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
     return res.status(401).json({ msg: "Please verify your email first." });
   }
 
-  if (bcrypt.compare(req.body.password, result.password)) {
+  if (bcrypt.compareSync(req.body.password, result.password)) {
     const token = jwt.sign(
       { userId: result.id, role: result.role, email: result.email },
       process.env.JWT_SECRET,
@@ -43,6 +43,7 @@ exports.login = async (req, res) => {
 
     res.status(200).json({
       msg: "Logged in successfully",
+      role: result.role
     });
   } else {
     return res.status(403).json({ msg: "Invalid credentials" });
@@ -52,7 +53,7 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
   const errors = registerCheck(req.body);
   if (errors.length) {
-    res.status(400).json({ errors });
+    res.status(400).json({ msg: "Validation errors", errors  });
   } else {
     try {
       const result = await db.User.findOne({
@@ -121,3 +122,11 @@ exports.verifyEmail = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
+
+exports.autoLogin = (req, res) => {
+  if(req.user) {
+    res.json({ loggedIn: true, role: req.user.role})
+  } else {
+    res.json({ loggedIn: false, role: ""})
+  }
+}

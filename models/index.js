@@ -21,8 +21,8 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
+      const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+      db[model.name] = model;
   });
 
 Object.keys(db).forEach(modelName => {
@@ -35,8 +35,10 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 // this line will drop the db and re-create tables
-// db.sequelize.sync({force: true})
+db.sequelize.sync({force: true})
 // this line will alter the db and re-create tables
 // db.sequelize.sync({alter: true})
+// db.sequelize.sync()
+
 
 module.exports = db;

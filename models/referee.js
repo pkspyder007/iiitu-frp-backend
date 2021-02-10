@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Referee.belongsTo(models.Application, { foreignKey: "appId", as: "application"})
+      Referee.belongsTo(models.Application, { foreignKey: "appId"})
     }
   };
   Referee.init({
@@ -43,8 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        // User belongsTo Company 1:1
-        model: "Applications",
+        model: "applications",
         key: "id",
       },
     }

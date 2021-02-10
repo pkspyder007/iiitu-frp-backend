@@ -2,7 +2,6 @@
 module.exports = {
   createSchema: {
     adNo: { type: "string", optional: false },
-    userId: { type: "number", optional: false },
     jobId: { type: "number", optional: false },
   },
   personalInfoCheck: {

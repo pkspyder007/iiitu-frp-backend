@@ -43,7 +43,7 @@ exports.login = async (req, res) => {
 
     res.status(200).json({
       msg: "Logged in successfully",
-      role: result.role
+      role: result.role,
     });
   } else {
     return res.status(403).json({ msg: "Invalid credentials" });
@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
   const errors = registerCheck(req.body);
   if (errors.length) {
-    res.status(400).json({ msg: "Validation errors", errors  });
+    res.status(400).json({ msg: "Validation errors", errors });
   } else {
     try {
       const result = await db.User.findOne({
@@ -108,12 +108,10 @@ exports.verifyEmail = async (req, res) => {
     );
 
     if (!result[0]) {
-      return res
-        .status(500)
-        .json({
-          msg:
-            "Could not verify email (INVALID TOKEN). Please contact Administrator",
-        });
+      return res.status(500).json({
+        msg:
+          "Could not verify email (INVALID TOKEN). Please contact Administrator",
+      });
     }
 
     res.json({
@@ -125,9 +123,22 @@ exports.verifyEmail = async (req, res) => {
 };
 
 exports.autoLogin = (req, res) => {
-  if(req.user) {
-    res.json({ loggedIn: true, role: req.user.role})
+  if (req.user) {
+    res.json({ loggedIn: true, role: req.user.role });
   } else {
-    res.json({ loggedIn: false, role: ""})
+    res.json({ loggedIn: false, role: "" });
   }
-}
+};
+
+exports.getAllApplications = async (req, res) => {
+  try {
+    const apps = await db.Application.findAll({
+      where: { userId: req.user.userId },
+      include: [{ model: db.PersonalDetail }],
+    });
+    res.json({ applications: apps });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ msg: error.message });
+  }
+};

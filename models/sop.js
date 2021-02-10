@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      SOP.belongsTo(models.Application, { foreignKey: "appId", as: "application"})
+      SOP.belongsTo(models.Application, { foreignKey: "appId"})
     }
   };
   SOP.init({

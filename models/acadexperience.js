@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      AcadExperience.belongsTo(models.Application, { foreignKey: "appId", as: "application"})
+      AcadExperience.belongsTo(models.Application, { foreignKey: "appId" })
     }
   };
   AcadExperience.init({

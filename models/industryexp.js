@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      IndustryExp.belongsTo(models.Application, { foreignKey: "appId"})
     }
   };
   IndustryExp.init({
@@ -41,7 +42,16 @@ module.exports = (sequelize, DataTypes) => {
     doc: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    appId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        // User belongsTo Company 1:1
+        model: "Applications",
+        key: "id",
+      },
+    },
   }, {
     sequelize,
     modelName: 'IndustryExp',

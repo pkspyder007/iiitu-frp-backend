@@ -11,10 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Application.hasMany(models.AcadQualification, { as: 'acadQualifications'});
-      Application.hasMany(models.AcadExperience, { as: 'acadExperiences'});
-      Application.hasMany(models.IndustryExp, { as: 'industryExperiences'});
-      Application.hasMany(models.Referee, { as: 'referees'});
+      Application.hasMany(models.AcadQualification, { foreignKey: "appId" });
+      Application.hasMany(models.AcadExperience, { foreignKey: "appId"});
+      Application.hasMany(models.IndustryExp, { foreignKey: "appId"});
+      Application.hasMany(models.Referee, { foreignKey: "appId"});
+      Application.hasOne(models.PersonalDetail, { foreignKey: "appId"});
     }
   };
   Application.init({

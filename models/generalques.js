@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      GeneralQues.belongsTo(models.Application, { foreignKey: "appId", as: "application"})
+      GeneralQues.belongsTo(models.Application, { foreignKey: "appId"})
     }
   };
   GeneralQues.init({

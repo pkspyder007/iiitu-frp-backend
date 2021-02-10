@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      OtherInfo.belongsTo(models.Application, { foreignKey: "appId", as: "application"})
+      OtherInfo.belongsTo(models.Application, { foreignKey: "appId"})
     }
   };
   OtherInfo.init({

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Application.hasMany(models.AcadQualification, { as: 'acadQualifications'});
       Application.hasMany(models.AcadExperience, { as: 'acadExperiences'});
       Application.hasMany(models.IndustryExp, { as: 'industryExperiences'});
-      Application.hasMany(models.Refree, { as: 'referees'});
+      Application.hasMany(models.Referee, { as: 'referees'});
     }
   };
   Application.init({
@@ -24,7 +24,15 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     adNo: DataTypes.STRING,
+    jobId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     toc: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -35,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     completedSteps: {
       type: DataTypes.STRING,
+      defaultValue: JSON.stringify([]),
       get: function() {
         return JSON.parse(this.getDataValue('completedSteps'));
       },

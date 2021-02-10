@@ -71,8 +71,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       pwd: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        type: DataTypes.STRING,
+        defaultValue: "NO",
       },
       pwdDoc: {
         type: DataTypes.STRING,
@@ -85,6 +85,10 @@ module.exports = (sequelize, DataTypes) => {
       photo: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
 
       appId: {

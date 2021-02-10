@@ -6,6 +6,7 @@ var cors = require("cors");
 require("dotenv").config();
 var usersRouter = require("./routes/users");
 var jobsRouter = require("./routes/jobs");
+var appRouter = require("./routes/application");
 
 var app = express();
 
@@ -49,6 +50,8 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 // app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/jobs", jobsRouter);
+app.use("/applications", appRouter);
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));

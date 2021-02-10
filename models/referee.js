@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Refree extends Model {
+  class Referee extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,9 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Referee.belongsTo(models.Application, { foreignKey: "appId", as: "application"})
     }
   };
-  Refree.init({
+  Referee.init({
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -37,10 +38,19 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    appId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        // User belongsTo Company 1:1
+        model: "Applications",
+        key: "id",
+      },
     }
   }, {
     sequelize,
-    modelName: 'Refree',
+    modelName: 'Referee',
   });
-  return Refree;
+  return Referee;
 };

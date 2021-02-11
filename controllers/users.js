@@ -134,7 +134,6 @@ exports.getAllApplications = async (req, res) => {
   try {
     const apps = await db.Application.findAll({
       where: { userId: req.user.userId },
-      include: [{ model: db.PersonalDetail }],
     });
     res.json({ applications: apps });
   } catch (error) {

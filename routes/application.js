@@ -15,7 +15,8 @@ const {
   addOtherInfo,
   addFuturePlans,
   addGeneral,
-  addReferees
+  addReferees,
+  getById
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -319,5 +320,12 @@ router.post(
   checkAuth,
   addReferees
 );
+
+router.get(
+  "/:id",
+  checkAuth,
+  getById
+);
+
 
 module.exports = router;

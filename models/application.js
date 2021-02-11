@@ -11,11 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Application.hasMany(models.AcadQualification, { foreignKey: "appId" });
       Application.hasMany(models.AcadExperience, { foreignKey: "appId"});
+      Application.hasMany(models.AcadQualification, { foreignKey: "appId" });
+      Application.hasOne(models.BestPapers, { foreignKey: "appId"});
+      Application.hasOne(models.FuturePlans, { foreignKey: "appId"});
+      Application.hasOne(models.GeneralQues, { foreignKey: "appId"});
       Application.hasMany(models.IndustryExp, { foreignKey: "appId"});
-      Application.hasMany(models.Referee, { foreignKey: "appId"});
+      Application.hasOne(models.OtherInfo, { foreignKey: "appId"});
+      Application.hasOne(models.Patents, { foreignKey: "appId"});
       Application.hasOne(models.PersonalDetail, { foreignKey: "appId"});
+      Application.hasOne(models.Publications, { foreignKey: "appId"});
+      Application.hasMany(models.Referee, { foreignKey: "appId"});
+      Application.hasOne(models.Research, { foreignKey: "appId"});
+      Application.hasOne(models.SOP, { foreignKey: "appId"});
+      Application.hasOne(models.Thesis, { foreignKey: "appId"});
     }
   };
   Application.init({
@@ -41,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
     currentStep: {
       type: DataTypes.INTEGER,
       defaultValue: 1
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     completedSteps: {
       type: DataTypes.STRING,

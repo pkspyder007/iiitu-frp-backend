@@ -67,7 +67,7 @@ exports.register = async (req, res) => {
       req.body.emailToken = uuid();
       const user = await db.User.create(req.body);
       sendEmail(
-        "pkspyder007@gmail.com",
+        req.body.email,
         "verify email",
         verifyEmailTemplate(
           `${req.protocol}://${req.get("host")}/users/verifyEmail/${

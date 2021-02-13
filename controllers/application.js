@@ -593,3 +593,144 @@ exports.getById = async (req, res) => {
     return res.json({ msg: error.message });
   }
 };
+
+
+exports.deletePersonal = async (req, res) => {
+  try {
+    const data = await db.PersonalDetail.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteAcadExp = async (req, res) => {
+  try {
+    const data = await db.AcadExperience.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteAcadQual = async (req, res) => {
+  try {
+    const data = await db.AcadQualification.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteBestPapers = async (req, res) => {
+  try {
+    const data = await db.BestPapers.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteFuturePlans = async (req, res) => {
+  try {
+    const data = await db.FuturePlans.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteGeneralQues = async (req, res) => {
+  try {
+    const data = await db.GeneralQues.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteIndExp = async (req, res) => {
+  try {
+    const data = await db.IndustryExp.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteOtherInfo = async (req, res) => {
+  try {
+    const data = await db.OtherInfo.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deletePatents = async (req, res) => {
+  try {
+    const data = await db.Patents.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deletePublications = async (req, res) => {
+  try {
+    const data = await db.Publications.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteReferees = async (req, res) => {
+  try {
+    const data = await db.Referee.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteResearch = async (req, res) => {
+  try {
+    const data = await db.Research.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteSOP = async (req, res) => {
+  try {
+    const data = await db.SOP.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}
+
+exports.deleteThesis = async (req, res) => {
+  try {
+    const data = await db.Thesis.findOne({ where: { id: req.params.id }});
+    await data.destroy();
+    res.json({ msg : "Data deleted successfully"});
+  } catch (error) {
+    res.status(400).json({ msg : error.message });
+  }
+}

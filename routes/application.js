@@ -16,7 +16,21 @@ const {
   addFuturePlans,
   addGeneral,
   addReferees,
-  getById
+  getById,
+  deletePersonal,
+  deleteAcadExp,
+  deleteAcadQual,
+  deleteBestPapers,
+  deleteFuturePlans,
+  deleteGeneralQues,
+  deleteIndExp,
+  deleteOtherInfo,
+  deletePatents,
+  deletePublications,
+  deleteReferees,
+  deleteResearch,
+  deleteSOP,
+  deleteThesis
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -327,5 +341,19 @@ router.get(
   getById
 );
 
+router.delete("/personal/:id", checkAuth, deletePersonal);
+router.delete("/acadexp/:id", checkAuth, deleteAcadExp);
+  router.delete("/acadqual/:id", checkAuth, deleteAcadQual);
+router.delete("/bestpapers/:id", checkAuth, deleteBestPapers);
+router.delete("/futureplans/:id", checkAuth, deleteFuturePlans);
+router.delete("/generalques/:id", checkAuth, deleteGeneralQues);
+router.delete("/indexp/:id", checkAuth, deleteIndExp);
+router.delete("/otherinfo/:id", checkAuth, deleteOtherInfo);
+router.delete("/patents/:id", checkAuth, deletePatents);
+router.delete("/publications/:id", checkAuth, deletePublications);
+router.delete("/referees/:id", checkAuth, deleteReferees);
+router.delete("/research/:id", checkAuth, deleteResearch);
+router.delete("/sop/:id", checkAuth, deleteSOP);
+router.delete("/thesis/:id", checkAuth, deleteThesis);
 
 module.exports = router;

@@ -17,8 +17,8 @@ const storage = multer.diskStorage({
     })
   },
   filename: function (req, file, cb) {
-    const ext = file.originalname.substring(file.originalname.lastIndexOf(".") + 1);
-    cb(null, "app-" + req.params.id + "-"+ file.originalname + uuid() +  "." + ext);
+    // const ext = file.originalname.substring(file.originalname.lastIndexOf(".") + 1);
+    cb(null, "app-" + req.params.id + "-"+ uuid() + "-" + file.originalname);
   },
 });
 

@@ -17,7 +17,7 @@ exports.createApp = async (req, res) => {
     }
 
     const checkAppExists = await db.Application.findOne({
-      where: { userId: req.user.userId, jobId: req.body.jobId },
+      where: { userId: req.user.userId, jobId: req.body.jobId, school: req.body.school, dept: req.body.dept },
     });
     if (checkAppExists) {
       return res

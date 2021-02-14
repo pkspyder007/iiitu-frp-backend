@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     dept: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     desc: {
       type: DataTypes.TEXT,
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     school: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     docLink: {
       type: DataTypes.STRING,

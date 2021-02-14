@@ -43,6 +43,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    dept: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    school: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     toc: {
       type: DataTypes.BOOLEAN,
       defaultValue: false

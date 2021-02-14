@@ -4,10 +4,10 @@ const v = new Validator();
 
 const jobSchema = {
   title: { type: "string", nullable: false },
-  dept: { type: "string", nullable: false },
+  dept: { type: "string", nullable: true },
   desc: { type: "string", nullable: false },
   adNo: { type: "string", nullable: false },
-  school: { type: "string", nullable: false },
+  school: { type: "string", nullable: true },
   docLink: { type: "string", nullable: false },
 };
 

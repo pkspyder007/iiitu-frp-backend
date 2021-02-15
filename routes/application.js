@@ -16,6 +16,7 @@ const {
   addFuturePlans,
   addGeneral,
   addReferees,
+  lockApp,
   getById,
   deletePersonal,
   deleteAcadExp,
@@ -333,6 +334,12 @@ router.post(
   "/:id/referees",
   checkAuth,
   addReferees
+);
+
+router.post(
+  "/:id/lock",
+  checkAuth,
+  lockApp
 );
 
 router.get(

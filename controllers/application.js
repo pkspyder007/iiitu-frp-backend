@@ -564,6 +564,57 @@ exports.addReferees = async (req, res) => {
   }
 };
 
+exports.lockApp = async (req, res) => {
+  try {
+    const errors = [];
+    const app = await db.Application.findOne({
+      where: { id: req.params.id, userId: req.user.userId },
+      include: [
+        { model: db.PersonalDetail },
+        { model: db.AcadQualification },
+        { model: db.GeneralQues },
+        { model: db.Referee },
+      ],
+    });
+    if(!app.PersonalDetail) {
+      errors.push("Personal Information not provided.");
+    }
+    if(!app.GeneralQue) {
+      errors.push("General Qurstions not answered.");
+    }
+    const educations = app.AcadQualifications.map(e => e.education);
+    if(!educations.includes("10th")) {
+      errors.push("10th academic details are not present");
+    }
+    if(!educations.includes("10+2")) {
+      errors.push("10+2 academic details are not present");
+    }
+    if(!educations.includes("UG")) {
+      errors.push("UG academic details are not present");
+    }
+    if(!educations.includes("PG")) {
+      errors.push("PG academic details are not present");
+    }
+    if(!educations.includes("PHD")) {
+      errors.push("PHD academic details are not present");
+    }
+    
+    if(errors.length) {
+      return res.status(400).json({
+        errors,
+      });
+    }
+    await app.update({ completed: true,toc: true })
+    res.json({ msg: "Application locked. Please complete the Fee payment"});
+  } catch (error) {
+    console.log(error);
+    let errors = [error.message];
+    res.status(500).json({
+      errors,
+    });
+  }
+}
+
 exports.getById = async (req, res) => {
   try {
     const app = await db.Application.findOne({

@@ -15,13 +15,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Patents.init({
-    noOfPatents: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    list: {
+    num: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
+    },
+    year: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     appId: {
       type: DataTypes.INTEGER,

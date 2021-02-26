@@ -31,7 +31,8 @@ const {
   deleteReferees,
   deleteResearch,
   deleteSOP,
-  deleteThesis
+  deleteThesis,
+  setEduMode
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -45,6 +46,7 @@ router.post(
     try {
       uploadMiddleware([
         { name: "pwdDoc" },
+        { name: "catDoc" },
         { name: "govtIdCard" },
         { name: "photo" },
       ])(req, res, (err) => {
@@ -66,6 +68,8 @@ router.post(
   },
   addPersonalInfo
 );
+
+router.post("/:id/setEdumode", checkAuth, setEduMode);
 
 router.post(
   "/:id/education",
@@ -222,7 +226,7 @@ router.post(
   checkAuth,
   function (req, res, next) {
     try {
-      uploadMiddleware([{ name: "first" }, { name: "second" }, { name: "third"}])(req, res, (err) => {
+      uploadMiddleware([{ name: "doc" }])(req, res, (err) => {
         if (err) {
           return res.status(400).json({ msg: err.message, errors: [] });
         }

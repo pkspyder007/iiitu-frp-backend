@@ -60,7 +60,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 1
     },
     eduMode: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
     completed: {
       type: DataTypes.BOOLEAN,

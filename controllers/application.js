@@ -17,20 +17,23 @@ exports.createApp = async (req, res) => {
     }
 
     const checkAppExists = await db.Application.findOne({
-      where: { userId: req.user.userId, jobId: req.body.jobId, school: req.body.school, dept: req.body.dept },
+      where: {
+        userId: req.user.userId,
+        jobId: req.body.jobId,
+        school: req.body.school,
+        dept: req.body.dept,
+      },
     });
     if (checkAppExists) {
-      return res
-        .status(400)
-        .json({
-          msg: "Application already exists.",
-          errors: [
-            {
-              message:
-                "You have already applied to this opening please check your dashboard.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Application already exists.",
+        errors: [
+          {
+            message:
+              "You have already applied to this opening please check your dashboard.",
+          },
+        ],
+      });
     }
 
     const app = await db.Application.create({
@@ -70,16 +73,14 @@ exports.addPersonalInfo = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.PersonalDetail.create({
@@ -121,17 +122,15 @@ exports.addEducation = async (req, res) => {
     });
     if (existsCheck) {
       if (req.body.education !== "OTHER") {
-        return res
-          .status(400)
-          .json({
-            msg: "Data already exists.",
-            errors: [
-              {
-                message:
-                  "You have already filled the details for this education.",
-              },
-            ],
-          });
+        return res.status(400).json({
+          msg: "Data already exists.",
+          errors: [
+            {
+              message:
+                "You have already filled the details for this education.",
+            },
+          ],
+        });
       }
     }
 
@@ -171,17 +170,15 @@ exports.addAcadExp = async (req, res) => {
     });
     if (existsCheck) {
       if (req.body.education !== "OTHER") {
-        return res
-          .status(400)
-          .json({
-            msg: "Data already exists.",
-            errors: [
-              {
-                message:
-                  "You have already filled the details for this education.",
-              },
-            ],
-          });
+        return res.status(400).json({
+          msg: "Data already exists.",
+          errors: [
+            {
+              message:
+                "You have already filled the details for this education.",
+            },
+          ],
+        });
       }
     }
 
@@ -210,16 +207,14 @@ exports.addSponseredProject = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.Research.create({ ...req.body });
@@ -244,16 +239,14 @@ exports.addThesis = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.Thesis.create({ ...req.body });
@@ -301,16 +294,14 @@ exports.addPublications = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.Publications.create({ ...req.body });
@@ -337,16 +328,14 @@ exports.addBestPapers = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.BestPapers.create({ ...req.body });
@@ -369,16 +358,14 @@ exports.addSOP = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.SOP.create({ ...req.body, appId: req.params.id });
@@ -400,16 +387,14 @@ exports.addPatents = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.Patents.create({ ...req.body, appId: req.params.id });
@@ -435,16 +420,14 @@ exports.addOtherInfo = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.OtherInfo.create({
@@ -470,16 +453,14 @@ exports.addFuturePlans = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.FuturePlans.create({
@@ -504,16 +485,14 @@ exports.addGeneral = async (req, res) => {
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this section.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this section.",
+          },
+        ],
+      });
     }
 
     const data = await db.GeneralQues.create({
@@ -539,16 +518,14 @@ exports.addReferees = async (req, res) => {
       where: { email: req.body.email },
     });
     if (existsCheck) {
-      return res
-        .status(400)
-        .json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message: "You have already filled the details for this Referee.",
-            },
-          ],
-        });
+      return res.status(400).json({
+        msg: "Data already exists.",
+        errors: [
+          {
+            message: "You have already filled the details for this Referee.",
+          },
+        ],
+      });
     }
 
     const data = await db.Referee.create({ ...req.body, appId: req.params.id });
@@ -559,6 +536,26 @@ exports.addReferees = async (req, res) => {
   } catch (error) {
     let errors = [{ message: error.message }];
     res.status(500).json({
+      errors,
+    });
+  }
+};
+
+exports.setEduMode = async (req, res) => {
+  try {
+    const data = await db.Application.update(
+      { eduMode: req.body.mode },
+      { where: { id: req.params.id } }
+    );
+    if (!data) {
+      return res.status(500).json({
+        errors: [{ message: "Something went wrong." }],
+      });
+    };
+    return res.json({ message: "Edu mode updated successfully."});
+  } catch (error) {
+    let errors = [{ message: error.message }];
+    return res.status(500).json({
       errors,
     });
   }
@@ -576,36 +573,36 @@ exports.lockApp = async (req, res) => {
         { model: db.Referee },
       ],
     });
-    if(!app.PersonalDetail) {
+    if (!app.PersonalDetail) {
       errors.push("Personal Information not provided.");
     }
-    if(!app.GeneralQue) {
-      errors.push("General Qurstions not answered.");
+    if (!app.GeneralQue) {
+      errors.push("General Questions not answered.");
     }
-    const educations = app.AcadQualifications.map(e => e.education);
-    if(!educations.includes("10th")) {
+    const educations = app.AcadQualifications.map((e) => e.education);
+    if (!educations.includes("10th")) {
       errors.push("10th academic details are not present");
     }
-    if(!educations.includes("10+2")) {
+    if (!educations.includes("10+2")) {
       errors.push("10+2 academic details are not present");
     }
-    if(!educations.includes("UG")) {
+    if (!educations.includes("UG")) {
       errors.push("UG academic details are not present");
     }
-    if(!educations.includes("PG")) {
+    if (!educations.includes("PG")) {
       errors.push("PG academic details are not present");
     }
-    if(!educations.includes("PHD")) {
+    if (!educations.includes("PHD")) {
       errors.push("PHD academic details are not present");
     }
-    
-    if(errors.length) {
+
+    if (errors.length) {
       return res.status(400).json({
         errors,
       });
     }
-    await app.update({ completed: true,toc: true })
-    res.json({ msg: "Application locked. Please complete the Fee payment"});
+    await app.update({ completed: true, toc: true });
+    res.json({ msg: "Application locked. Please complete the Fee payment" });
   } catch (error) {
     console.log(error);
     let errors = [error.message];
@@ -613,7 +610,7 @@ exports.lockApp = async (req, res) => {
       errors,
     });
   }
-}
+};
 
 exports.getById = async (req, res) => {
   try {
@@ -645,143 +642,167 @@ exports.getById = async (req, res) => {
   }
 };
 
+const PDFDocument = require('pdfkit');
+const fs = require("fs");
+const path = require("path");
+
+exports.generatePDF = async (req, res) => {
+  try {
+    const doc = new PDFDocument;
+    doc.pipe(fs.createWriteStream(path.join(process.cwd(), 'uploads', 'test.pdf')));
+    doc.text('doc details');
+
+    doc.end();
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+}
+
 
 exports.deletePersonal = async (req, res) => {
   try {
-    const data = await db.PersonalDetail.findOne({ where: { id: req.params.id }});
+    const data = await db.PersonalDetail.findOne({
+      where: { id: req.params.id },
+    });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteAcadExp = async (req, res) => {
   try {
-    const data = await db.AcadExperience.findOne({ where: { id: req.params.id }});
+    const data = await db.AcadExperience.findOne({
+      where: { id: req.params.id },
+    });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteAcadQual = async (req, res) => {
   try {
-    const data = await db.AcadQualification.findOne({ where: { id: req.params.id }});
+    const data = await db.AcadQualification.findOne({
+      where: { id: req.params.id },
+    });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteBestPapers = async (req, res) => {
   try {
-    const data = await db.BestPapers.findOne({ where: { id: req.params.id }});
+    const data = await db.BestPapers.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteFuturePlans = async (req, res) => {
   try {
-    const data = await db.FuturePlans.findOne({ where: { id: req.params.id }});
+    const data = await db.FuturePlans.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteGeneralQues = async (req, res) => {
   try {
-    const data = await db.GeneralQues.findOne({ where: { id: req.params.id }});
+    const data = await db.GeneralQues.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteIndExp = async (req, res) => {
   try {
-    const data = await db.IndustryExp.findOne({ where: { id: req.params.id }});
+    const data = await db.IndustryExp.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteOtherInfo = async (req, res) => {
   try {
-    const data = await db.OtherInfo.findOne({ where: { id: req.params.id }});
+    const data = await db.OtherInfo.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deletePatents = async (req, res) => {
   try {
-    const data = await db.Patents.findOne({ where: { id: req.params.id }});
+    const data = await db.Patents.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deletePublications = async (req, res) => {
   try {
-    const data = await db.Publications.findOne({ where: { id: req.params.id }});
+    const data = await db.Publications.findOne({
+      where: { id: req.params.id },
+    });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteReferees = async (req, res) => {
   try {
-    const data = await db.Referee.findOne({ where: { id: req.params.id }});
+    const data = await db.Referee.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteResearch = async (req, res) => {
   try {
-    const data = await db.Research.findOne({ where: { id: req.params.id }});
+    const data = await db.Research.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteSOP = async (req, res) => {
   try {
-    const data = await db.SOP.findOne({ where: { id: req.params.id }});
+    const data = await db.SOP.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};
 
 exports.deleteThesis = async (req, res) => {
   try {
-    const data = await db.Thesis.findOne({ where: { id: req.params.id }});
+    const data = await db.Thesis.findOne({ where: { id: req.params.id } });
     await data.destroy();
-    res.json({ msg : "Data deleted successfully"});
+    res.json({ msg: "Data deleted successfully" });
   } catch (error) {
-    res.status(400).json({ msg : error.message });
+    res.status(400).json({ msg: error.message });
   }
-}
+};

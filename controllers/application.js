@@ -641,7 +641,7 @@ exports.getById = async (req, res) => {
     }
     return res.json({ msg: "Application found", app });
   } catch (error) {
-    return res.json({ msg: error.message });
+    return res.status(400).json({ msg: error.message });
   }
 };
 

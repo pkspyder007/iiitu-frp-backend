@@ -15,36 +15,32 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Research.init({
-    projectAsPI: {
-      type: DataTypes.INTEGER,
+    title: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    grantPI: {
-      type: DataTypes.INTEGER,
+    sponsor: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    projectAsCOPI: {
-      type: DataTypes.INTEGER,
+    amount: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    grantCOPI: {
-      type: DataTypes.INTEGER,
+    duration: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    inProgressAsPI: {
-      type: DataTypes.INTEGER,
+    start: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    grantInProgressAsPI: {
-      type: DataTypes.INTEGER,
+    end: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    inProgressAsCOPI: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    grantInProgressAsCOPI: {
-      type: DataTypes.INTEGER,
+    outcome: {
+      type: DataTypes.TEXT,
       allowNull: false
     },
     doc: {

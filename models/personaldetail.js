@@ -70,6 +70,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      catDoc: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
       pwd: {
         type: DataTypes.STRING,
         defaultValue: "NO",

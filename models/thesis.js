@@ -15,28 +15,28 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Thesis.init({
-    phdCompleted: {
-      type: DataTypes.INTEGER,
+    type: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    phdProgress: {
-      type: DataTypes.INTEGER,
+    status: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    pgCompleted: {
-      type: DataTypes.INTEGER,
+    nameOfCandidate: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    pgProgress: {
-      type: DataTypes.INTEGER,
+    insitute: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    ugCompleted: {
-      type: DataTypes.INTEGER,
+    regYear: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    ugProgress: {
-      type: DataTypes.INTEGER,
+    finalViva: {
+      type: DataTypes.TEXT,
       allowNull: false
     },
     doc: {

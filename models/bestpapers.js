@@ -15,15 +15,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   BestPapers.init({
-    first: {
+    title: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    second: {
+    yearOfPub: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    third: {
+    publisher: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    doc: {
       type: DataTypes.STRING,
       allowNull: true
     },

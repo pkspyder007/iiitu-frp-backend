@@ -59,6 +59,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 1
     },
+    eduMode: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     completed: {
       type: DataTypes.BOOLEAN,
       defaultValue: false

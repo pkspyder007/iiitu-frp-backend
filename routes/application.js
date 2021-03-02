@@ -225,6 +225,7 @@ router.post(
   "/:id/bestpapers",
   checkAuth,
   function (req, res, next) {
+    console.log(req.body)
     try {
       uploadMiddleware([{ name: "doc" }])(req, res, (err) => {
         if (err) {

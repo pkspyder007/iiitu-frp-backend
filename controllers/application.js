@@ -319,9 +319,9 @@ exports.addPublications = async (req, res) => {
 
 exports.addBestPapers = async (req, res) => {
   try {
-    req.body.first = req.files?.first[0]?.path;
-    req.body.second = req.files?.second[0]?.path;
-    req.body.third = req.files?.third[0]?.path;
+    req.body.doc = req.files?.doc[0]?.path;
+    // req.body.second = req.files?.second[0]?.path;
+    // req.body.third = req.files?.third[0]?.path;
     req.body.appId = req.params.id;
 
     const existsCheck = await db.BestPapers.findOne({
@@ -638,7 +638,7 @@ exports.getById = async (req, res) => {
     }
     return res.json({ msg: "Application found", app });
   } catch (error) {
-    return res.json({ msg: error.message });
+    return res.status(400).json({ msg: error.message });
   }
 };
 

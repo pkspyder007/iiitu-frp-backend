@@ -44,9 +44,20 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 // this line will drop the db and re-create tables
-// db.sequelize.sync({force: true});
+// db.sequelize.sync({ force: true });
 // this line will alter the db and re-create tables
 // db.sequelize.sync({ alter: true });
 // db.sequelize.sync()
+
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+
+testConnection();
 
 module.exports = db;

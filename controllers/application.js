@@ -203,19 +203,19 @@ exports.addSponseredProject = async (req, res) => {
   req.body.appId = req.params.id;
 
   try {
-    const existsCheck = await db.Research.findOne({
-      where: { appId: req.params.id },
-    });
-    if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this section.",
-          },
-        ],
-      });
-    }
+    // const existsCheck = await db.Research.findOne({
+    //   where: { appId: req.params.id },
+    // });
+    // if (existsCheck) {
+    //   return res.status(400).json({
+    //     msg: "Data already exists.",
+    //     errors: [
+    //       {
+    //         message: "You have already filled the details for this section.",
+    //       },
+    //     ],
+    //   });
+    // }
 
     const data = await db.Research.create({ ...req.body });
     res.status(201).json({
@@ -235,19 +235,19 @@ exports.addThesis = async (req, res) => {
   req.body.appId = req.params.id;
 
   try {
-    const existsCheck = await db.Thesis.findOne({
-      where: { appId: req.params.id },
-    });
-    if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this section.",
-          },
-        ],
-      });
-    }
+    // const existsCheck = await db.Thesis.findOne({
+    //   where: { appId: req.params.id },
+    // });
+    // if (existsCheck) {
+    //   return res.status(400).json({
+    //     msg: "Data already exists.",
+    //     errors: [
+    //       {
+    //         message: "You have already filled the details for this section.",
+    //       },
+    //     ],
+    //   });
+    // }
 
     const data = await db.Thesis.create({ ...req.body });
     res.status(201).json({
@@ -551,8 +551,8 @@ exports.setEduMode = async (req, res) => {
       return res.status(500).json({
         errors: [{ message: "Something went wrong." }],
       });
-    };
-    return res.json({ message: "Edu mode updated successfully."});
+    }
+    return res.json({ message: "Edu mode updated successfully." });
   } catch (error) {
     let errors = [{ message: error.message }];
     return res.status(500).json({
@@ -642,22 +642,23 @@ exports.getById = async (req, res) => {
   }
 };
 
-const PDFDocument = require('pdfkit');
+const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
 
 exports.generatePDF = async (req, res) => {
   try {
-    const doc = new PDFDocument;
-    doc.pipe(fs.createWriteStream(path.join(process.cwd(), 'uploads', 'test.pdf')));
-    doc.text('doc details');
+    const doc = new PDFDocument();
+    doc.pipe(
+      fs.createWriteStream(path.join(process.cwd(), "uploads", "test.pdf"))
+    );
+    doc.text("doc details");
 
     doc.end();
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
-}
-
+};
 
 exports.deletePersonal = async (req, res) => {
   try {

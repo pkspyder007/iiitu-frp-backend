@@ -32,7 +32,7 @@ const {
   deleteResearch,
   deleteSOP,
   deleteThesis,
-  setEduMode
+  setEduMode,
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -56,14 +56,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addPersonalInfo
@@ -83,14 +81,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addEducation
@@ -108,14 +104,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addAcadExp
@@ -133,14 +127,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addSponseredProject
@@ -158,14 +150,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addThesis
@@ -183,14 +173,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addIndExp
@@ -208,14 +196,12 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addPublications
@@ -225,7 +211,7 @@ router.post(
   "/:id/bestpapers",
   checkAuth,
   function (req, res, next) {
-    console.log(req.body)
+    console.log(req.body);
     try {
       uploadMiddleware([{ name: "doc" }])(req, res, (err) => {
         if (err) {
@@ -234,19 +220,16 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addBestPapers
 );
-
 
 router.post(
   "/:id/sop",
@@ -260,45 +243,37 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addSOP
 );
 
-router.post(
-  "/:id/patents",
-  checkAuth,
-  addPatents
-);
+router.post("/:id/patents", checkAuth, addPatents);
 
 router.post(
   "/:id/otherinfo",
   checkAuth,
   function (req, res, next) {
     try {
-      uploadMiddleware([{ name: "awards" },{ name: "extraCirricular" }])(req, res, (err) => {
+      uploadMiddleware([{ name: "doc" }])(req, res, (err) => {
         if (err) {
           return res.status(400).json({ msg: err.message, errors: [] });
         }
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addOtherInfo
@@ -316,46 +291,28 @@ router.post(
         next();
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({
-          msg: "Server Error",
-          errors: [
-            "Something went wrong while uploading documents. Please try again...",
-          ],
-        });
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
     }
   },
   addFuturePlans
 );
 
-router.post(
-  "/:id/general",
-  checkAuth,
-  addGeneral
-);
+router.post("/:id/general", checkAuth, addGeneral);
 
-router.post(
-  "/:id/referees",
-  checkAuth,
-  addReferees
-);
+router.post("/:id/referees", checkAuth, addReferees);
 
-router.post(
-  "/:id/lock",
-  checkAuth,
-  lockApp
-);
+router.post("/:id/lock", checkAuth, lockApp);
 
-router.get(
-  "/:id",
-  checkAuth,
-  getById
-);
+router.get("/:id", checkAuth, getById);
 
 router.delete("/personal/:id", checkAuth, deletePersonal);
 router.delete("/acadexp/:id", checkAuth, deleteAcadExp);
-  router.delete("/acadqual/:id", checkAuth, deleteAcadQual);
+router.delete("/acadqual/:id", checkAuth, deleteAcadQual);
 router.delete("/bestpapers/:id", checkAuth, deleteBestPapers);
 router.delete("/futureplans/:id", checkAuth, deleteFuturePlans);
 router.delete("/generalques/:id", checkAuth, deleteGeneralQues);

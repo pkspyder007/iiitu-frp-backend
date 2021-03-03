@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       Application.hasOne(models.FuturePlans, { foreignKey: "appId" });
       Application.hasOne(models.GeneralQues, { foreignKey: "appId" });
       Application.hasMany(models.IndustryExp, { foreignKey: "appId" });
-      Application.hasOne(models.OtherInfo, { foreignKey: "appId" });
+      Application.hasMany(models.OtherInfo, { foreignKey: "appId" });
       Application.hasMany(models.Patents, { foreignKey: "appId" });
       Application.hasOne(models.PersonalDetail, { foreignKey: "appId" });
       Application.hasMany(models.Publications, { foreignKey: "appId" });
@@ -32,6 +32,11 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
+      },
+      refNum: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "NIL",
       },
       userId: {
         type: DataTypes.STRING,

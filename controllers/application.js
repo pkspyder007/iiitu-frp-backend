@@ -412,23 +412,21 @@ exports.addPatents = async (req, res) => {
 
 exports.addOtherInfo = async (req, res) => {
   try {
-    if (req.body.awards !== "") req.body.awards = req.files?.awards[0]?.path;
-    if (req.body.extraCirricular !== "")
-      req.body.extraCirricular = req.files?.extraCirricular[0]?.path;
-
-    const existsCheck = await db.OtherInfo.findOne({
-      where: { appId: req.params.id },
-    });
-    if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this section.",
-          },
-        ],
-      });
-    }
+    // console.log(req.files);
+    if (req.body.doc !== "") req.body.doc = req.files?.doc[0]?.path;
+    // const existsCheck = await db.OtherInfo.findOne({
+    //   where: { appId: req.params.id },
+    // });
+    // if (existsCheck) {
+    //   return res.status(400).json({
+    //     msg: "Data already exists.",
+    //     errors: [
+    //       {
+    //         message: "You have already filled the details for this section.",
+    //       },
+    //     ],
+    //   });
+    // }
 
     const data = await db.OtherInfo.create({
       ...req.body,
@@ -439,6 +437,7 @@ exports.addOtherInfo = async (req, res) => {
       data: data,
     });
   } catch (error) {
+    console.log(error);
     let errors = [{ message: error.message }];
     res.status(500).json({
       errors,

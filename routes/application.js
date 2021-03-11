@@ -33,6 +33,7 @@ const {
   deleteSOP,
   deleteThesis,
   setEduMode,
+  addFeeDetails,
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -300,6 +301,29 @@ router.post(
     }
   },
   addFuturePlans
+);
+
+router.post(
+  "/:id/feeDetails",
+  checkAuth,
+  function (req, res, next) {
+    try {
+      uploadMiddleware([{ name: "feeReciept" }])(req, res, (err) => {
+        if (err) {
+          return res.status(400).json({ msg: err.message, errors: [] });
+        }
+        next();
+      });
+    } catch (error) {
+      res.status(500).json({
+        msg: "Server Error",
+        errors: [
+          "Something went wrong while uploading documents. Please try again...",
+        ],
+      });
+    }
+  },
+  addFeeDetails
 );
 
 router.post("/:id/general", checkAuth, addGeneral);

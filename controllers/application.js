@@ -565,34 +565,47 @@ exports.lockApp = async (req, res) => {
     const errors = [];
     const app = await db.Application.findOne({
       where: { id: req.params.id, userId: req.user.userId },
-      include: [
-        { model: db.PersonalDetail },
-        { model: db.AcadQualification },
-        { model: db.GeneralQues },
-        { model: db.Referee },
-      ],
+      include: [{ model: db.PersonalDetail }, { model: db.AcadQualification }],
     });
     if (!app.PersonalDetail) {
       errors.push("Personal Information not provided.");
     }
-    if (!app.GeneralQue) {
-      errors.push("General Questions not answered.");
-    }
     const educations = app.AcadQualifications.map((e) => e.education);
-    if (!educations.includes("10th")) {
-      errors.push("10th academic details are not present");
-    }
-    if (!educations.includes("10+2")) {
-      errors.push("10+2 academic details are not present");
-    }
-    if (!educations.includes("UG")) {
-      errors.push("UG academic details are not present");
-    }
-    if (!educations.includes("PG")) {
-      errors.push("PG academic details are not present");
-    }
-    if (!educations.includes("PHD")) {
-      errors.push("PHD academic details are not present");
+
+    switch (app.eduMode) {
+      case "normal":
+        if (!educations.includes("UG")) {
+          errors.push("UG academic details are not present");
+        }
+        if (!educations.includes("PG")) {
+          errors.push("PG academic details are not present");
+        }
+        if (!educations.includes("PHD")) {
+          errors.push("PHD academic details are not present");
+        }
+        break;
+
+      case "dual":
+        if (!educations.includes("PG")) {
+          errors.push("PG academic details are not present");
+        }
+        if (!educations.includes("PHD")) {
+          errors.push("PHD academic details are not present");
+        }
+        break;
+
+      case "dphd":
+        if (!educations.includes("PHD")) {
+          errors.push("PHD academic details are not present");
+        }
+        break;
+
+      default:
+        if (educations.length < 1) {
+          errors.push("No Education details found.");
+        }
+        errors.push("No Education mode selected");
+        break;
     }
 
     if (errors.length) {
@@ -600,12 +613,44 @@ exports.lockApp = async (req, res) => {
         errors,
       });
     }
-    await app.update({ completed: true, toc: true });
+    const totals = await db.Application.findAll({ where: { dept: app.dept } });
+    let d = new Date();
+    let n = d.getFullYear();
+    let refNum = `AP${n}-${app.dept.toUpperCase()}-${totals.length}`;
+    // console.log("---------------------------------");
+    // console.log(refNum);
+    // console.log("---------------------------------");
+    await app.update({ refNum, completed: true, toc: true });
     res.json({ msg: "Application locked. Please complete the Fee payment" });
   } catch (error) {
     console.log(error);
     let errors = [error.message];
     res.status(500).json({
+      errors,
+    });
+  }
+};
+
+exports.addFeeDetails = async (req, res) => {
+  try {
+    req.body.feeReciept = req.files?.feeReciept[0]?.path;
+    const data = await db.Application.update(
+      {
+        feeTid: req.body.feeTid,
+        feeReciept: req.body.feeReciept,
+        feeDate: req.body.feeDate,
+      },
+      { where: { id: req.params.id } }
+    );
+    if (!data) {
+      return res.status(500).json({
+        errors: [{ message: "Something went wrong." }],
+      });
+    }
+    return res.json({ message: "Fee Deatils updated successfully." });
+  } catch (error) {
+    let errors = [{ message: error.message }];
+    return res.status(500).json({
       errors,
     });
   }

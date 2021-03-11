@@ -71,6 +71,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      feeTid: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      feeDate: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      feeReciept: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       completedSteps: {
         type: DataTypes.STRING,
         defaultValue: JSON.stringify([]),

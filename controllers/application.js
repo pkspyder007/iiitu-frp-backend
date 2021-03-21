@@ -656,9 +656,39 @@ exports.addFeeDetails = async (req, res) => {
   }
 };
 
-exports.getById = async (req, res) => {
+exports.GenPdf=async (req,res)=>{
   try {
     const app = await db.Application.findOne({
+      where: { id: req.params.id, userId: req.user.userId },
+      include: [
+        { model: db.AcadExperience },
+        { model: db.AcadQualification },
+        { model: db.BestPapers },
+        { model: db.FuturePlans },
+        { model: db.GeneralQues },
+        { model: db.IndustryExp },
+        { model: db.OtherInfo },
+        { model: db.Patents },
+        { model: db.PersonalDetail },
+        { model: db.Publications },
+        { model: db.Referee },
+        { model: db.Research },
+        { model: db.SOP },
+        { model: db.Thesis },
+      ],
+    });
+    if (!app) 
+      return res.status(400).json({ msg: "Application not found" });
+    console.log(app.PersonalDetail.dataValues)
+  return res.render('index',{msg:req.params.id})
+} catch (error) {
+  return res.status(400).json({ msg: error.message,...app.PersonalDetail });
+}
+}
+
+exports.getById = async (req, res) => {
+  try {
+      const app = await db.Application.findOne({
       where: { id: req.params.id, userId: req.user.userId },
       include: [
         { model: db.AcadExperience },

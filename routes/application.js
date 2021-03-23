@@ -34,6 +34,7 @@ const {
   deleteThesis,
   setEduMode,
   addFeeDetails,
+  GenPdf
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -333,6 +334,7 @@ router.post("/:id/referees", checkAuth, addReferees);
 router.post("/:id/lock", checkAuth, lockApp);
 
 router.get("/:id", checkAuth, getById);
+router.get('/:id/gpdf',checkAuth, GenPdf)
 
 router.delete("/personal/:id", checkAuth, deletePersonal);
 router.delete("/acadexp/:id", checkAuth, deleteAcadExp);

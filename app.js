@@ -46,11 +46,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client", "build")));
+app.set('view engine','pug')
 
 // app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/jobs", jobsRouter);
+
 app.use("/applications", appRouter);
+
 
 
 app.get("*", (req, res) => {

@@ -209,7 +209,7 @@ html(lang='en')
       function callApi(id){
       //alert("hi")
       let data;
-      fetch(`http://localhost:4000/applications/${id}`).then((response)=>
+      fetch(`/applications/${id}`).then((response)=>
         response.json()
       ).then((dat)=>{
           data=dat.app

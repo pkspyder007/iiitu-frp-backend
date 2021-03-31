@@ -327,16 +327,16 @@ exports.addBestPapers = async (req, res) => {
     const existsCheck = await db.BestPapers.findOne({
       where: { appId: req.params.id },
     });
-    if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this section.",
-          },
-        ],
-      });
-    }
+    // if (existsCheck) {
+    //   return res.status(400).json({
+    //     msg: "Data already exists.",
+    //     errors: [
+    //       {
+    //         message: "You have already filled the details for this section.",
+    //       },
+    //     ],
+    //   });
+    // }
 
     const data = await db.BestPapers.create({ ...req.body });
     res.status(201).json({
@@ -386,16 +386,16 @@ exports.addPatents = async (req, res) => {
     const existsCheck = await db.Patents.findOne({
       where: { appId: req.params.id },
     });
-    if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this section.",
-          },
-        ],
-      });
-    }
+    // if (existsCheck) {
+    //   return res.status(400).json({
+    //     msg: "Data already exists.",
+    //     errors: [
+    //       {
+    //         message: "You have already filled the details for this section.",
+    //       },
+    //     ],
+    //   });
+    // }
 
     const data = await db.Patents.create({ ...req.body, appId: req.params.id });
     res.status(201).json({
@@ -447,18 +447,22 @@ exports.addOtherInfo = async (req, res) => {
 
 exports.addFuturePlans = async (req, res) => {
   try {
+    console.log(req.params);
     req.body.doc = req.files?.doc[0]?.path;
     const existsCheck = await db.FuturePlans.findOne({
       where: { appId: req.params.id },
     });
     if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this section.",
-          },
-        ],
+      const data = await db.FuturePlans.update(
+        {
+          ...req.body,
+          appId: req.params.id,
+        },
+        { where: { appId: req.params.id } }
+      );
+      return res.status(201).json({
+        msg: "Data added successfully.",
+        data: data,
       });
     }
 

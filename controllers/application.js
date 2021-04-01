@@ -59,6 +59,7 @@ exports.addPersonalInfo = async (req, res) => {
     req.body.pwdDoc = req.files.pwdDoc[0]?.path;
   }
   req.body.govtIdCard = req.files?.govtIdCard[0]?.path;
+  req.body.dobDoc = req.files?.dobDoc[0]?.path;
   req.body.photo = req.files?.photo[0]?.path;
   req.body.appId = req.params.id;
 
@@ -599,6 +600,9 @@ exports.lockApp = async (req, res) => {
         break;
 
       case "dphd":
+        if (!educations.includes("UG")) {
+          errors.push("UG academic details are not present");
+        }
         if (!educations.includes("PHD")) {
           errors.push("PHD academic details are not present");
         }

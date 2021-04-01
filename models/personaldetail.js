@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      PersonalDetail.belongsTo(models.Application, { foreignKey: 'appId'})
+      PersonalDetail.belongsTo(models.Application, { foreignKey: "appId" });
     }
   }
   PersonalDetail.init(
@@ -54,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      dobDoc: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       nationality: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -72,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       catDoc: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: true,
       },
       pwd: {
         type: DataTypes.STRING,
@@ -92,7 +96,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       userId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
 
       appId: {

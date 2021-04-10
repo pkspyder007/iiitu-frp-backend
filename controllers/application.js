@@ -577,6 +577,8 @@ exports.lockApp = async (req, res) => {
     }
     const educations = app.AcadQualifications.map((e) => e.education);
 
+    console.log(app.eduMode);
+
     switch (app.eduMode) {
       case "normal":
         if (!educations.includes("UG")) {
@@ -600,9 +602,6 @@ exports.lockApp = async (req, res) => {
         break;
 
       case "dphd":
-        if (!educations.includes("UG")) {
-          errors.push("UG academic details are not present");
-        }
         if (!educations.includes("PHD")) {
           errors.push("PHD academic details are not present");
         }

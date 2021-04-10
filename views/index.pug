@@ -1,245 +1,402 @@
 doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(http-equiv='X-UA-Compatible' content='IE=edge')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Document
-  style.
-    body{
-    width: 900px;
-    margin:auto;
-    }
-    .logo{
-    top: 15px;
-    left: 15px;
-    position: absolute;
-    width:120px;
-    height:120px
-    }
-    h2{
-    text-align: center;
-    font-size: 24px;
-    font-weight: 500;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    }
-    #inner{
-    padding-left: 40px;
-    
-    }
-    h1{
-    font-size: 20px;
-    }
-    #inner-item{
-    display: flex;
-    flex-direction: row;
-    font-size: 18px;
-    margin:10px
-    }
-    #ii1{
-    width:170px;
-    margin-right: 30px;
-    }
-    .grid{
-    display:grid;
-    grid-template-columns: 160px 160px 160px 120px 130px ;
-    grid-column-gap: 0;
-    column-gap: 0;
-    
-    }
-    .grid1{
-    display:grid;
-    grid-template-columns: 210px 130px 50px 50px 80px 210px ;
-    grid-column-gap: 0;
-    column-gap: 0;
-    
-    }
-    #grid-item{
-    border:solid black 1.5px;
-    padding:10px;
-    text-align: center;
-    margin:0;
-    display:flex;
-    justify-content:center;
-    align-items:center
-    }
-  body
-    div(style='text-align: center;margin: auto;border-bottom: solid black 1px;padding:10px')
-      img.logo(src='https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png')
-      h1 Indain Institute of Information Technology Una
-      h1 Himachal Pradesh
-      h1(style='font-size: 15px;font-weight: 500;') (An Institute of National Importation Under MHRD)
-    h2 Application For Faculty Position
-    #inner
-      #inner-item
-       #ii1 1.Application ID
-       span#ref AP2019-12-0001
-      #inner-item
-        #ii1 2.Position(s) applied for
-        span#job Assistant
-      #inner-item
-        #ii1 2.School(s)
-        #school(style='display: flex;flex-direction: column;')
-    h2 Personal Information
-    #inner
-      #inner-item
-        #ii1 1.Name
-        span#name 
-      #inner-item
-        #ii1 2.Date of Birth
-        span#dob
-      #inner-item
-        #ii1 3.Sex
-        span#sex
-      #inner-item
-        #ii1 4.Nationality
-        span#nationality
-      #inner-item
-        #ii1 5.Marital Status
-        span#martialStatus
-      #inner-item
-        #ii1 6.Cateogary
-        span#category
-      #inner-item(style='margin-bottom: 30px;')
-        #ii1 7.Correspondence Address
-        div(style='width:150px;margin-right: 120px;')#corAddress
-      #inner-item
-        #ii1 8.Permanent Address
-        div(style='width:150px;margin-right: 120px;')#perAddress
-      h2 Academic Profile
-      div(style='margin:auto;width: min-content;')
-        #acad.grid
-          #grid-item
-            | Degree/Title
-          #grid-item
-            | Branch/spelization
-          #grid-item
-            | University/ College
-          #grid-item
-            | Year Of Complition
-          #grid-item
-            | CGPA/ Marks
-      h2 Academic Exeperience
-      div(style='margin:auto;width: min-content;')
-        #acadexp.grid1
-          #grid-item
-            | University/Organization
-          #grid-item
-            | Desination
-          #grid-item
-            | from
-          #grid-item
-            | to
-          #grid-item
-            | Monthaly Salary
-          #grid-item
-            | Nature of Duties
-      h2(style=";margin-top:200px") Industrial Exeperience
-      div(style='margin:auto;width: min-content')
-        #indexp.grid1
-          #grid-item
-            | University/Organization
-          #grid-item
-            | Desination
-          #grid-item
-            | from
-          #grid-item
-            | to
-          #grid-item
-            | Monthaly Salary
-          #grid-item
-            | Nature of Duties
-    script.
-      function addTable(to,data){
-      const grid=document.getElementById(to)
-      data.map((obj)=>{
-      const div = document.createElement('div')
-      div.innerHTML=obj.education
-      div.id="grid-item"
-      grid.appendChild(div)
-      const div2 = document.createElement('div')
-      div2.id="grid-item"
-      div2.innerHTML=obj.subject
-      grid.appendChild(div2)
-      const div3=document.createElement('div')
-      div3.id="grid-item"
-      div3.innerHTML=obj.institution
-      grid.appendChild(div3)
-      const div4=document.createElement('div')
-      div4.innerHTML=obj.year
-      div4.id="grid-item"
-      grid.appendChild(div4)
-      const div5=document.createElement('div')
-      div5.id="grid-item"
-      div5.innerHTML=obj.percentage||"-"
-      grid.appendChild(div5)
-      })
-      }
-      
-      function addExp(to,data){
-      const grid=document.getElementById(to)
-      data.map((obj)=>{
-      const div = document.createElement('div')
-      div.innerHTML=obj.org
-      div.id="grid-item"
-      grid.appendChild(div)
-      const div2 = document.createElement('div')
-      div2.id="grid-item"
-      div2.innerHTML=obj.designation
-      grid.appendChild(div2)
-      const div3=document.createElement('div')
-      div3.id="grid-item"
-      div3.innerHTML=obj.from
-      grid.appendChild(div3)
-      const div4=document.createElement('div')
-      div4.innerHTML=obj.to
-      div4.id="grid-item"
-      grid.appendChild(div4)
-      const div5=document.createElement('div')
-      div5.id="grid-item"
-      div5.innerHTML=obj.salary
-      grid.appendChild(div5)
-      const div6=document.createElement('div')
-      div6.id="grid-item"
-      div6.innerHTML=obj.natureOfDuties
-      grid.appendChild(div6)
-      })
-      }
-      function callApi(id){
-      //alert("hi")
-      let data;
-      fetch(`http://localhost:4000/applications/${id}`).then((response)=>
-        response.json()
-      ).then((dat)=>{
-          data=dat.app
-          document.getElementById('ref').innerHTML=data.refNum
-          document.getElementById('school').innerHTML=data.school
-          document.getElementById('name').innerHTML=data.PersonalDetail.name
-          document.getElementById('dob').innerHTML=data.PersonalDetail.DOB 
-          document.getElementById('sex').innerHTML=data.PersonalDetail.sex 
-          document.getElementById('name').innerHTML=data.PersonalDetail.name
-          document.getElementById('nationality').innerHTML=data.PersonalDetail.nationality
-          document.getElementById('martialStatus').innerHTML=data.PersonalDetail.martialStatus
-          document.getElementById('corAddress').innerHTML=data.PersonalDetail.corAddress
-          document.getElementById('perAddress').innerHTML=data.PersonalDetail.perAddress
-          document.getElementById('category').innerHTML=data.PersonalDetail.category
-          fetch(`/jobs/getById/${data.jobId}`).then((res)=>
-              res.json()
-          ).then(data=>{
-               document.getElementById('school').innerHTML=data.job.title
-          }).catch((err)=>{
-            console.log(err)
-          })
-          addTable('acad',data.AcadQualifications)
-          addExp('acadexp',data.AcadExperiences)
-          addExp('indexp',data.IndustryExps)
-          window.print()
-      }).catch(err=>{
-      console.log(err)
-      })
-      return data
-      }
-      //alert("j")
-      let data=callApi("#{msg}")
-      
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+style.
+  body {
+  width: 900px;
+  margin: auto;
+  }
+  .logo {
+  top: 15px;
+  left: 15px;
+  position: absolute;
+  width: 120px;
+  height: 120px
+  }
+  h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  }
+  #inner {
+  padding-left: 40px;
+  }
+  h1 {
+  font-size: 20px;
+  }
+  #inner-item {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  margin: 10px
+  }
+  #ii1 {
+  width: 170px;
+  margin-right: 30px;
+  }
+  .grid {
+  display: grid;
+  grid-template-columns: 160px 160px 160px 120px 130px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .grid1 {
+  display: grid;
+  grid-template-columns: 210px 130px 50px 50px 80px 210px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .grid2 {
+  display: grid;
+  grid-template-columns: 90px 230px 230px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridResearch {
+  display: grid;
+  grid-template-columns: 270px 270px 270px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridsop{
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridsopi{
+  display: grid;
+  grid-template-columns: 240px 80px 80px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridpub{
+  display: grid;
+  grid-template-columns: 200px 500px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridpubii{
+  display: grid;
+  grid-template-columns: 125px 125px 125px 125px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridRInside{
+  display: grid;
+  grid-template-columns: 210px 60px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  #grid-item {
+  border: solid black 1.5px;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center
+  }
+  .grid-item {
+  border: solid black 1.5px;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center
+  }
+div(style='text-align: center;margin: auto;border-bottom: solid black 1px;padding:10px;position:relative')
+  img.logo(src='https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png')
+  h1 Indain Institute of Information Technology Una
+  h1 Himachal Pradesh
+  h1(style='font-size: 15px;font-weight: 500;') (An Institute of National Importation Under MHRD)
+h2 Application For Faculty Position
+#inner
+  #inner-item
+    #ii1 1.Application ID
+    span#ref AP2019-12-0001
+  #inner-item
+    #ii1 2.Position(s) applied for
+    span#job Assistant
+  #inner-item
+    #ii1 2.School(s)
+    #school(style='display: flex;flex-direction: column;')
+h2 Personal Information
+#inner
+  #inner-item
+    #ii1 1.Name
+    span#name  
+  #inner-item
+    #ii1 2.Date of Birth
+    span#dob
+  #inner-item
+    #ii1 3.Sex
+    span#sex
+  #inner-item
+    #ii1 4.Nationality
+    span#nationality
+  #inner-item
+    #ii1 5.Marital Status
+    span#martialStatus
+  #inner-item
+    #ii1 6.Cateogary
+    span#category
+  #inner-item(style='margin-bottom: 30px;')
+    #ii1 7.Correspondence Address
+    #corAddress(style='width:150px;margin-right: 120px;')
+  #inner-item
+    #ii1 8.Permanent Address
+    #perAddress(style='width:150px;margin-right: 120px;')
+  h2 Academic Profile
+  div(style='margin:auto;width: min-content;')
+    #acad.grid
+      .grid-item Degree/Title
+      .grid-item Branch/spelization
+      .grid-item University/ College
+      .grid-item Year Of Complition
+      .grid-item CGPA/ Marks
+  h2 Academic Exeperience
+  div(style='margin:auto;width: min-content;')
+    #acadexp.grid1
+      .grid-item University/Organization
+      .grid-item Desination
+      .grid-item from
+      .grid-item to
+      .grid-item Monthaly Salary
+      .grid-item Nature of Duties
+  h2(style='margin-top:200px') Industrial Exeperience
+  div(style='margin:auto;width: min-content')
+    #indexp.grid1
+      .grid-item University/Organization
+      .grid-item Desination
+      .grid-item from
+      .grid-item to
+      .grid-item Monthaly Salary
+      .grid-item Nature of Duties
+  h2(style='margin-top:80px') Research Profile
+  h2(style='margin-top:20px;font-size: 20px;') Sponsored Research Project
+  div(style='margin: auto;width: min-content;')
+    #indexp.gridsop
+      .grid-item Projects as PI
+      .grid-item Projects as CO-PI
+      .gridsopi
+        .grid-item Status of Project
+        .grid-item Number
+        .grid-item Total Grant
+        .grid-item Completed
+        #picmp.grid-item 0
+        #picmpGrant.grid-item 0
+        .grid-item InProgress
+        #piprog.grid-item 0
+        #piprogGrant.grid-item 0
+      .gridsopi
+        .grid-item Status of Project
+        .grid-item Number
+        .grid-item Total Grant
+        .grid-item Completed
+        #copicmp.grid-item 0
+        #copicmpGrant.grid-item 0
+        .grid-item InProgress
+        #copiprog.grid-item 0
+        #copiprogGrant.grid-item 0
+  h2(style='margin-top:60px;font-size: 20px;') Thesis Supervised
+  div(style='margin:auto;width: min-content')
+    #indexp.gridResearch
+      .grid-item Phd
+      .grid-item PG
+      .grid-item UG
+      .gridRInside
+        .grid-item Status
+        .grid-item No
+        .grid-item Completed
+        #pc.grid-item 0
+        .grid-item In Progress
+        #pp.grid-item 0
+      .gridRInside
+        .grid-item Status
+        .grid-item No
+        .grid-item Completed
+        #pgc.grid-item 0
+        .grid-item In Progress
+        #pgp.grid-item 0
+      .gridRInside
+        .grid-item Status
+        .grid-item No
+        .grid-item Completed
+        #uc.grid-item 0
+        .grid-item In Progress
+        #up.grid-item 0
+  h2(style='margin-top:60px;font-size: 20px;') Publications
+  div(style='margin:auto;width: min-content')
+    #indexp.gridpub
+      .grid-item Books/Chaptors: Published/Accepted
+      .gridpubi
+        .grid-item Papers Published / Accepted in
+        .gridpubii
+          .grid-item International Journals
+          .grid-item National Journals
+          .grid-item International Conferences
+          .grid-item National Conferences
+      .grid-item 0
+      .gridpubii
+        .grid-item 0
+        .grid-item 0
+        .grid-item 0
+        .grid-item 0
+  h2(style='margin-top:80px') Document Checklist
+  div(style='margin:auto;width: min-content;margin-bottom: 20px;')
+    #indexp.grid2
+      .grid-item S. NO.
+      .grid-item Document Discription
+      .grid-item Yes/No
+      .grid-item 1
+      .grid-item Education Qualification Cert.
+      .grid-item
+      .grid-item 2
+      .grid-item Academic Exeperience 
+      .grid-item
+      .grid-item 3
+      .grid-item Industry Exeperience 
+      .grid-item
+      .grid-item 4
+      .grid-item Cateogary Exeperience 
+      .grid-item
+      .grid-item 5
+      .grid-item PWD Certificate 
+      .grid-item
+      .grid-item 6
+      .grid-item Govt. Id Proof 
+      .grid-item
+      .grid-item 7
+      .grid-item Future Plan 
+      .grid-item
+      .grid-item 8
+      .grid-item Thesis Supervision 
+      .grid-item
+      .grid-item 9
+      .grid-item Sponsored Projectes 
+      .grid-item
+script.
+  function addTable(to, data) {
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.education
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.subject
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.institution
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.year
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.percentage || "-"
+  grid.appendChild(div5)
+  })
+  }
+  function addExp(to, data) {
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.org
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.designation
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.from
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.to
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.salary
+  grid.appendChild(div5)
+  const div6 = document.createElement('div')
+  div6.id = "grid-item"
+  div6.innerHTML = obj.natureOfDuties
+  grid.appendChild(div6)
+  })
+  }
+  function set(id,val){
+  document.getElementById(id).innerHTML = val
+  }
+  function Thesis(app){
+  let phdc=0,phdp=0,ugc=0,ugp=0,pgc=0,pgp=0
+  app.thesis.map((obj)=>{
+  if(obj.status==="completed"&&obj.Type=="PHD")
+  phdc++;
+  else
+  phdp++;
+  if(obj.status==="completed"&&obj.Type=="PG")
+  pgc++;
+  else
+  pgp++;
+  if(obj.status==="completed"&&obj.Type=="UG")
+  ugc++;
+  else
+  ugp++;
+  })
+  set('pc',phdc)
+  set('pp',phdp)
+  set('uc',ugc)
+  set('up',ugp)
+  set('pgc',pgc)
+  set('pgp',pgp)
+  }
+  function callApi(id) {
+  //alert("hi")
+  let data;
+  fetch(`http://localhost:4000/applications/${id}`).then((response) =>
+  response.json()
+  ).then((dat) => {
+  data = dat.app
+  set('ref',data.refNum)
+  set('school',data.school)
+  set('name',data.PersonalDetail.name)
+  set('dob',data.PersonalDetail.DOB)
+  set('sex',data.PersonalDetail.sex)
+  set('name',data.PersonalDetail.name)
+  set('nationality',data.PersonalDetail.nationality)
+  set('martialStatus',data.PersonalDetail.martialStatus)
+  set('corAddress',data.PersonalDetail.corAddress)
+  set('perAddress',data.PersonalDetail.perAddress)
+  set('category',data.PersonalDetail.category)
+  fetch(`/jobs/getById/${data.jobId}`).then((res) =>
+  res.json()
+  ).then(data => {
+  document.getElementById('school').innerHTML = data.job.title
+  }).catch((err) => {
+  console.log(err)
+  })
+  addTable('acad', data.AcadQualifications)
+  addExp('acadexp', data.AcadExperiences)
+  addExp('indexp', data.IndustryExps)
+  Thesis(data)
+  window.print()
+  }).catch(err => {
+  console.log(err)
+  })
+  return data
+  }
+  //alert("j")
+  let data = callApi("")

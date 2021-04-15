@@ -25,6 +25,7 @@ style.
   }
   #inner {
   padding-left: 40px;
+  position: relative;
   }
   h1 {
   font-size: 20px;
@@ -65,7 +66,7 @@ style.
   }
   .gridsop{
   display: grid;
-  grid-template-columns: 400px 400px;
+  grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
   grid-column-gap: 0;
   column-gap: 0;
   }
@@ -122,7 +123,7 @@ h2 Application For Faculty Position
     #ii1 1.Application ID
     span#ref AP2019-12-0001
   #inner-item
-    #ii1 2.Position(s) applied for
+    #ii1 2 Job Ad. No.
     span#job Assistant
   #inner-item
     #ii1 2.School(s)
@@ -153,7 +154,13 @@ h2 Personal Information
   #inner-item
     #ii1 8.Permanent Address
     #perAddress(style='width:150px;margin-right: 120px;')
-  h2 Academic Profile
+  h2 Fee Detailes
+  .inner-item(style='margin-bottom: 15px;')
+    #ii1 1  Tansition Id
+    #tid(style='width:150px;margin-right: 120px;')
+  .inner-item(style='margin-bottom: 15px;')
+    #ii1 2  Payment Date
+    #pd(style='width:150px;margin-right: 120px;')
   div(style='margin:auto;width: min-content;')
     #acad.grid
       .grid-item Degree/Title
@@ -182,32 +189,17 @@ h2 Personal Information
   h2(style='margin-top:80px') Research Profile
   h2(style='margin-top:20px;font-size: 20px;') Sponsored Research Project
   div(style='margin: auto;width: min-content;')
-    #indexp.gridsop
-      .grid-item Projects as PI
-      .grid-item Projects as CO-PI
-      .gridsopi
-        .grid-item Status of Project
-        .grid-item Number
-        .grid-item Total Grant
-        .grid-item Completed
-        #picmp.grid-item 0
-        #picmpGrant.grid-item 0
-        .grid-item InProgress
-        #piprog.grid-item 0
-        #piprogGrant.grid-item 0
-      .gridsopi
-        .grid-item Status of Project
-        .grid-item Number
-        .grid-item Total Grant
-        .grid-item Completed
-        #copicmp.grid-item 0
-        #copicmpGrant.grid-item 0
-        .grid-item InProgress
-        #copiprog.grid-item 0
-        #copiprogGrant.grid-item 0
+    #sop.gridsop
+      .grid-item title
+      .grid-item sponsor
+      .grid-item amount
+      .grid-item duration
+      .grid-item start
+      .grid-item end
+      .grid-item outcome
   h2(style='margin-top:60px;font-size: 20px;') Thesis Supervised
   div(style='margin:auto;width: min-content')
-    #indexp.gridResearch
+    #thesis.gridResearch
       .grid-item Phd
       .grid-item PG
       .grid-item UG
@@ -217,7 +209,7 @@ h2 Personal Information
         .grid-item Completed
         #pc.grid-item 0
         .grid-item In Progress
-        #pp.grid-item 0
+        #ppp.grid-item 0
       .gridRInside
         .grid-item Status
         .grid-item No
@@ -234,7 +226,7 @@ h2 Personal Information
         #up.grid-item 0
   h2(style='margin-top:60px;font-size: 20px;') Publications
   div(style='margin:auto;width: min-content')
-    #indexp.gridpub
+    #publications.gridpub
       .grid-item Books/Chaptors: Published/Accepted
       .gridpubi
         .grid-item Papers Published / Accepted in
@@ -243,12 +235,12 @@ h2 Personal Information
           .grid-item National Journals
           .grid-item International Conferences
           .grid-item National Conferences
-      .grid-item 0
+      #books.grid-item 0
       .gridpubii
-        .grid-item 0
-        .grid-item 0
-        .grid-item 0
-        .grid-item 0
+        #ij.grid-item 0
+        #nj.grid-item 0
+        #ic.grid-item 0
+        #nc.grid-item 0
   h2(style='margin-top:80px') Document Checklist
   div(style='margin:auto;width: min-content;margin-bottom: 20px;')
     #indexp.grid2
@@ -256,32 +248,31 @@ h2 Personal Information
       .grid-item Document Discription
       .grid-item Yes/No
       .grid-item 1
-      .grid-item Education Qualification Cert.
-      .grid-item
+      .grid-item DoB Proof
+      #dobProof.grid-item
       .grid-item 2
-      .grid-item Academic Exeperience 
-      .grid-item
+      .grid-item UG Degree 
+      #ugd.grid-item
       .grid-item 3
-      .grid-item Industry Exeperience 
-      .grid-item
+      .grid-item PG Degree 
+      #pgd.grid-item
       .grid-item 4
-      .grid-item Cateogary Exeperience 
-      .grid-item
+      .grid-item Phd Degree
+      #phdd.grid-item
       .grid-item 5
-      .grid-item PWD Certificate 
-      .grid-item
+      .grid-item Category Certificate
+      #cc.grid-item
       .grid-item 6
-      .grid-item Govt. Id Proof 
-      .grid-item
+      .grid-item Pwd Certificate
+      #pwdc.grid-item
       .grid-item 7
-      .grid-item Future Plan 
-      .grid-item
+      .grid-item Govt issued id Card
+      #gid.grid-item
       .grid-item 8
-      .grid-item Thesis Supervision 
-      .grid-item
-      .grid-item 9
-      .grid-item Sponsored Projectes 
-      .grid-item
+      .grid-item Payment proof
+      #pp.grid-item
+  div(style='top:20px;right:20px;position: absolute;')
+    img#per(src='' style='width:200px;height:250px')  
 script.
   function addTable(to, data) {
   const grid = document.getElementById(to)
@@ -337,27 +328,69 @@ script.
   grid.appendChild(div6)
   })
   }
+  function Sponsored(to,data){
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.title
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.sponsor
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.amount
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.duration
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.start
+  grid.appendChild(div5)
+  const div6 = document.createElement('div')
+  div6.id = "grid-item"
+  div6.innerHTML = obj.end
+  grid.appendChild(div6)
+  const div7 = document.createElement('div')
+  div7.id = "grid-item"
+  div7.innerHTML = obj.outcome
+  grid.appendChild(div7)
+  })
+  }
   function set(id,val){
   document.getElementById(id).innerHTML = val
   }
+  function publication(data){
+    console.log(data)
+  set("books",data[0]?.books)
+  set("ij",data[0]?.iJournals)
+  set("nj",data[0]?.nJournals)
+  set("ic",data[0]?.iConf)
+  set("nc",data[0]?.nConf)
+  }
   function Thesis(app){
+    console.log(app)
   let phdc=0,phdp=0,ugc=0,ugp=0,pgc=0,pgp=0
-  app.thesis.map((obj)=>{
-  if(obj.status==="completed"&&obj.Type=="PHD")
+  app.Theses?.map((obj)=>{
+  if(obj.status==="completed"&&obj.type=="PHD")
   phdc++;
-  else
+  else if(obj.status===""&&obj.type=="PHD")
   phdp++;
-  if(obj.status==="completed"&&obj.Type=="PG")
+  if(obj.status==="completed"&&obj.type=="PG")
   pgc++;
-  else
+  else if(obj.status===""&&obj.type=="PG")
   pgp++;
-  if(obj.status==="completed"&&obj.Type=="UG")
+  if(obj.status==="completed"&&obj.type=="UG")
   ugc++;
-  else
+  else if(obj.status===""&&obj.type=="UG")
   ugp++;
   })
   set('pc',phdc)
-  set('pp',phdp)
+  set('ppp',phdp)
   set('uc',ugc)
   set('up',ugp)
   set('pgc',pgc)
@@ -366,7 +399,7 @@ script.
   function callApi(id) {
   //alert("hi")
   let data;
-  fetch(`http://localhost:4000/applications/${id}`).then((response) =>
+  fetch(`/applications/${id}`).then((response) =>
   response.json()
   ).then((dat) => {
   data = dat.app
@@ -392,9 +425,36 @@ script.
   addExp('acadexp', data.AcadExperiences)
   addExp('indexp', data.IndustryExps)
   Thesis(data)
-  window.print()
+  Sponsored("sop",data.Research)
+  publication(data.Publications)
+  set("job", data.adNo)
+  set("dobProof",data.PersonalDetail.dobDoc==""||!data.PersonalDetail.dobDoc?"NO":"YES")
+  set("cc",data.PersonalDetail.catDoc==""||!data.PersonalDetail.catDoc?"NO":"YES")
+  set("pwdc",data.PersonalDetail.pwdDoc==""||!data.PersonalDetail.pwdDoc?"NO":"YES")
+  set("gid",data.PersonalDetail.govtIdCard==""||!data.PersonalDetail.govtIdCard?"NO":"YES")
+  set('pp',data.feeReceipt != "" ?"YES":"NO")
+  set('tid',data.feeTid||"-")
+  set('pd',data.feeDate||"-")
+  data.AcadQualifications.map(obj=>{
+  if(obj.education==="UG"){
+  set("ugd",obj.doc==""||!obj.doc?"NO":"YES")
+  }else if(obj.education==="PG"){
+  set("pgd",obj.doc==""||!obj.doc?"NO":"YES")
+  }else if(obj.education == "PHD"){
+  set("phdd",obj.doc==""||!obj.doc?"NO":"YES")
+  }
+  })
+   let srt=data.PersonalDetail.photo.split('uploads');
+   let finalImage = srt[1];
+    if(srt[1][0] === "\\") {
+      finalImage = srt[1].split("\\").join("/")
+    }
+  document.getElementById('per').src=finalImage
+  setTimeout(() => {
+    window.print()
   }).catch(err => {
-  console.log(err)
+    console.log(err)
+  },500)
   })
   return data
   }

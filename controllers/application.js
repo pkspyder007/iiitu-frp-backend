@@ -55,15 +55,17 @@ exports.createApp = async (req, res) => {
 };
 
 exports.addPersonalInfo = async (req, res) => {
-  if (req.body.pwd === "true") {
-    req.body.pwdDoc = req.files.pwdDoc[0]?.path;
-  }
-  req.body.govtIdCard = req.files?.govtIdCard[0]?.path;
-  req.body.dobDoc = req.files?.dobDoc[0]?.path;
-  req.body.photo = req.files?.photo[0]?.path;
-  req.body.appId = req.params.id;
-
   try {
+    if (req.body.pwd === "true") {
+      req.body.pwdDoc = req.files.pwdDoc[0]?.path;
+    }
+    if (req.body.category !== "UR") {
+      req.body.catDoc = req.files.catDoc[0]?.path;
+    }
+    req.body.govtIdCard = req.files?.govtIdCard[0]?.path;
+    req.body.dobDoc = req.files?.dobDoc[0]?.path;
+    req.body.photo = req.files?.photo[0]?.path;
+    req.body.appId = req.params.id;
     const errors = personalCheck(req.body);
     if (errors.length) {
       return res.status(400).json({ msg: "Validation Errors", errors });
@@ -641,6 +643,7 @@ exports.lockApp = async (req, res) => {
 exports.addFeeDetails = async (req, res) => {
   try {
     req.body.feeReciept = req.files?.feeReciept[0]?.path;
+    console.log(req.body);
     const data = await db.Application.update(
       {
         feeTid: req.body.feeTid,

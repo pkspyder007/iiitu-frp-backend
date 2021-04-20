@@ -16,6 +16,14 @@ style.
   width: 120px;
   height: 120px
   }
+  span.print {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
+  }
   h2 {
   text-align: center;
   font-size: 24px;
@@ -117,6 +125,7 @@ div(style='text-align: center;margin: auto;border-bottom: solid black 1px;paddin
   h1 Indain Institute of Information Technology Una
   h1 Himachal Pradesh
   h1(style='font-size: 15px;font-weight: 500;') (An Institute of National Importation Under MHRD)
+  span.print(onclick='window.print()') Print
 h2 Application For Faculty Position
 #inner
   #inner-item
@@ -450,11 +459,11 @@ script.
       finalImage = srt[1].split("\\").join("/")
     }
   document.getElementById('per').src=finalImage
-  setTimeout(() => {
-    window.print()
-  }).catch(err => {
-    console.log(err)
-  },500)
+  //- setTimeout(() => {
+  //-   window.print()
+  //- }).catch(err => {
+  //-   console.log(err)
+  //- },500)
   })
   return data
   }

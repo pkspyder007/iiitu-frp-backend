@@ -35,6 +35,7 @@ const {
   setEduMode,
   addFeeDetails,
   GenPdf,
+  finalSubmit,
 } = require("../controllers/application");
 const { uploadMiddleware } = require("../utils/upload");
 var router = express.Router();
@@ -327,6 +328,8 @@ router.post(
   },
   addFeeDetails
 );
+
+router.post("/:id/finalsubmit", checkAuth, finalSubmit);
 
 router.post("/:id/general", checkAuth, addGeneral);
 

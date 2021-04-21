@@ -55,15 +55,17 @@ exports.createApp = async (req, res) => {
 };
 
 exports.addPersonalInfo = async (req, res) => {
-  if (req.body.pwd === "true") {
-    req.body.pwdDoc = req.files.pwdDoc[0]?.path;
-  }
-  req.body.govtIdCard = req.files?.govtIdCard[0]?.path;
-  req.body.dobDoc = req.files?.dobDoc[0]?.path;
-  req.body.photo = req.files?.photo[0]?.path;
-  req.body.appId = req.params.id;
-
   try {
+    if (req.body.pwd === "true") {
+      req.body.pwdDoc = req.files.pwdDoc[0]?.path;
+    }
+    if (req.body.category !== "UR") {
+      req.body.catDoc = req.files.catDoc[0]?.path;
+    }
+    req.body.govtIdCard = req.files?.govtIdCard[0]?.path;
+    req.body.dobDoc = req.files?.dobDoc[0]?.path;
+    req.body.photo = req.files?.photo[0]?.path;
+    req.body.appId = req.params.id;
     const errors = personalCheck(req.body);
     if (errors.length) {
       return res.status(400).json({ msg: "Validation Errors", errors });
@@ -169,19 +171,19 @@ exports.addAcadExp = async (req, res) => {
         designation: req.body.designation,
       },
     });
-    if (existsCheck) {
-      if (req.body.education !== "OTHER") {
-        return res.status(400).json({
-          msg: "Data already exists.",
-          errors: [
-            {
-              message:
-                "You have already filled the details for this education.",
-            },
-          ],
-        });
-      }
-    }
+    // if (existsCheck) {
+    //   if (req.body.education !== "OTHER") {
+    //     return res.status(400).json({
+    //       msg: "Data already exists.",
+    //       errors: [
+    //         {
+    //           message:
+    //             "You have already filled the details for this education.",
+    //         },
+    //       ],
+    //     });
+    //   }
+    // }
 
     const data = await db.AcadExperience.create({
       ...req.body,
@@ -646,6 +648,7 @@ exports.addFeeDetails = async (req, res) => {
         feeTid: req.body.feeTid,
         feeReciept: req.body.feeReciept,
         feeDate: req.body.feeDate,
+        currentStep: 10,
       },
       { where: { id: req.params.id } }
     );
@@ -719,6 +722,30 @@ exports.getById = async (req, res) => {
     return res.json({ msg: "Application found", app });
   } catch (error) {
     return res.status(400).json({ msg: error.message });
+  }
+};
+
+exports.finalSubmit = async (req, res) => {
+  try {
+    const data = await db.Application.update(
+      {
+        currentStep: 20,
+      },
+      { where: { id: req.params.id } }
+    );
+    console.log(data);
+    if (!data) {
+      return res.status(500).json({
+        errors: [{ message: "Something went wrong." }],
+      });
+    }
+    // add email trigger later
+    return res.json({ message: "Success." });
+  } catch (error) {
+    let errors = [{ message: error.message }];
+    return res.status(500).json({
+      errors,
+    });
   }
 };
 

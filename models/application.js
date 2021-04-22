@@ -83,6 +83,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      feeAmount: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       completedSteps: {
         type: DataTypes.STRING,
         defaultValue: JSON.stringify([]),

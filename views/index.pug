@@ -17,12 +17,12 @@ style.
   height: 120px
   }
   span.print {
-  position: absolute;
-  top: 50px;
-  right: 50px;
-  cursor: pointer;
-  color: blue;
-  font-weight: bold;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
   }
   h2 {
   text-align: center;
@@ -124,7 +124,7 @@ div(style='text-align: center;margin: auto;border-bottom: solid black 1px;paddin
   img.logo(src='https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png')
   h1 Indain Institute of Information Technology Una
   h1 Himachal Pradesh
-  h1(style='font-size: 15px;font-weight: 500;') (An Institute of National Importation Under MoE)
+  h1(style='font-size: 15px;font-weight: 500;') (An Institute of National Importation Under MHRD)
   span.print(onclick='window.print()') Print
 h2 Application For Faculty Position
 #inner
@@ -135,11 +135,8 @@ h2 Application For Faculty Position
     #ii1 2 Job Ad. No.
     span#job Assistant
   #inner-item
-    #ii1 3.School(s)
+    #ii1 2.School(s)
     #school(style='display: flex;flex-direction: column;')
-  #inner-item
-    #ii1 4.Deptartment
-    #dept(style='display: flex;flex-direction: column;')
 h2 Personal Information
 #inner
   #inner-item
@@ -149,7 +146,7 @@ h2 Personal Information
     #ii1 2.Date of Birth
     span#dob
   #inner-item
-    #ii1 3.Gender
+    #ii1 3.Sex
     span#sex
   #inner-item
     #ii1 4.Nationality
@@ -161,22 +158,18 @@ h2 Personal Information
     #ii1 6.Cateogary
     span#category
   #inner-item(style='margin-bottom: 30px;')
-    #ii1 7.Phone
-    #phone(style='width:150px;margin-right: 120px;')
-  #inner-item(style='margin-bottom: 30px;')
-    #ii1 8.Correspondence Address
+    #ii1 7.Correspondence Address
     #corAddress(style='width:150px;margin-right: 120px;')
   #inner-item
-    #ii1 9.Permanent Address
+    #ii1 8.Permanent Address
     #perAddress(style='width:150px;margin-right: 120px;')
   h2 Fee Detailes
-  #inner-item(style='margin-bottom: 15px;')
+  .inner-item(style='margin-bottom: 15px;')
     #ii1 1  Tansition Id
     #tid(style='width:150px;margin-right: 120px;')
-  #inner-item(style='margin-bottom: 15px;')
+  .inner-item(style='margin-bottom: 15px;')
     #ii1 2  Payment Date
     #pd(style='width:150px;margin-right: 120px;')
-  h2 Academic Qualificatiosn
   div(style='margin:auto;width: min-content;')
     #acad.grid
       .grid-item Degree/Title
@@ -206,13 +199,13 @@ h2 Personal Information
   h2(style='margin-top:20px;font-size: 20px;') Sponsored Research Project
   div(style='margin: auto;width: min-content;')
     #sop.gridsop
-      .grid-item Title
-      .grid-item Sponsor
-      .grid-item Amount
-      .grid-item Duration
-      .grid-item Start
-      .grid-item End
-      .grid-item Outcome
+      .grid-item title
+      .grid-item sponsor
+      .grid-item amount
+      .grid-item duration
+      .grid-item start
+      .grid-item end
+      .grid-item outcome
   h2(style='margin-top:60px;font-size: 20px;') Thesis Supervised
   div(style='margin:auto;width: min-content')
     #thesis.gridResearch
@@ -257,7 +250,7 @@ h2 Personal Information
         #nj.grid-item 0
         #ic.grid-item 0
         #nc.grid-item 0
-  h2(style='margin-top:510px') Document Checklist
+  h2(style='margin-top:80px') Document Checklist
   div(style='margin:auto;width: min-content;margin-bottom: 20px;')
     #indexp.grid2
       .grid-item S. NO.
@@ -288,24 +281,7 @@ h2 Personal Information
       .grid-item Payment proof
       #pp.grid-item
   div(style='top:20px;right:20px;position: absolute;')
-    img#per(src='' style='width:200px;height:250px')
-  div(style='font-size: 20px;font-weight: 600;margin-top: 150px;') Declaration to be Signed by the Candidate
-  div(style='padding-left:15px ;margin-top: 10px;margin-bottom: 20px;font-size: 17px;')
-    | I hearby declare that the entries in this form are true to the best of my knowledge and belief. If at any
-    | time I am found to have concealed any material/ information or given any false detailes, my appointment
-    | shall be liable to be summarily trminated without notice or compensation.
-  div(style='width: 80%;display: flex;flex-direction: row;justify-content: space-between;margin-bottom: 30px;margin-top: 60px;')
-    div(style='display: flex;flex-direction: column;')
-      div(style='margin-bottom: 5px;') Date:
-      div Place:
-    div(style='display: flex;flex-direction: column;')
-      div(style='font-weight: 700;margin-bottom: 20px;') Signature of Applicant
-      div Name:
-  div(style='display: flex;flex-direction: row;padding:8px;font-size: 17px;')
-    | Note:
-    div(style='margin-left: 20px;')
-      | This form duly signed along with all the necessary self altested documents much reach to the 
-      span(style='font-weight: 600;') &quot;The Registrar, Central Block, NIT Campus, Hamirpur,H.P. 177005&quot;
+    img#per(src='' style='width:200px;height:250px')  
 script.
   function addTable(to, data) {
   const grid = document.getElementById(to)
@@ -398,15 +374,15 @@ script.
   document.getElementById(id).innerHTML = val
   }
   function publication(data){
-  console.log(data)
-  set("books",data[0]?.books||0)
-  set("ij",data[0]?.iJournals||0)
-  set("nj",data[0]?.nJournals||0)
-  set("ic",data[0]?.iConf||0)
-  set("nc",data[0]?.nConf||0)
+    console.log(data)
+  set("books",data[0]?.books)
+  set("ij",data[0]?.iJournals)
+  set("nj",data[0]?.nJournals)
+  set("ic",data[0]?.iConf)
+  set("nc",data[0]?.nConf)
   }
   function Thesis(app){
-  console.log(app)
+    console.log(app)
   let phdc=0,phdp=0,ugc=0,ugp=0,pgc=0,pgp=0
   app.Theses?.map((obj)=>{
   if(obj.status==="completed"&&obj.type=="PHD")
@@ -438,16 +414,12 @@ script.
   data = dat.app
   set('ref',data.refNum)
   set('school',data.school)
-  set('dept',data.dept||'-')
   set('name',data.PersonalDetail.name)
-  let dobArr=data.PersonalDetail.DOB.split('-')
-  let srt=dobArr[2]+dobArr[1]+dobArr[0]
-  set('dob',srt||'-')
+  set('dob',data.PersonalDetail.DOB)
   set('sex',data.PersonalDetail.sex)
   set('name',data.PersonalDetail.name)
   set('nationality',data.PersonalDetail.nationality)
   set('martialStatus',data.PersonalDetail.martialStatus)
-  set('phone',data.PersonalDetail.phone||'-')
   set('corAddress',data.PersonalDetail.corAddress)
   set('perAddress',data.PersonalDetail.perAddress)
   set('category',data.PersonalDetail.category)
@@ -481,11 +453,11 @@ script.
   set("phdd",obj.doc==""||!obj.doc?"NO":"YES")
   }
   })
-  let srt=data.PersonalDetail.photo.split('uploads');
-  let finalImage = srt[1];
-  if(srt[1][0] === "\\\") {
-  finalImage = srt[1].split("\\\").join("/")
-  }
+   let srt=data.PersonalDetail.photo.split('uploads');
+   let finalImage = srt[1];
+    if(srt[1][0] === "\\") {
+      finalImage = srt[1].split("\\").join("/")
+    }
   document.getElementById('per').src=finalImage
   //- setTimeout(() => {
   //-   window.print()

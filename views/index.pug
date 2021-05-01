@@ -481,11 +481,12 @@ script.
   set("phdd",obj.doc==""||!obj.doc?"NO":"YES")
   }
   })
-  let srt=data.PersonalDetail.photo.split('uploads');
-  let finalImage = srt[1];
-  if(srt[1][0] === "\\\") {
-  finalImage = srt[1].split("\\\").join("/")
+  let str=data.PersonalDetail.photo.split('uploads');
+  let finalImage = str[1];
+  if(str[1][0] === "\\") {
+  finalImage = str[1].split("\\").join("/")
   }
+  console.log(finalImage)
   document.getElementById('per').src=finalImage
   //- setTimeout(() => {
   //-   window.print()

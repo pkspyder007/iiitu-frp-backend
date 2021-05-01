@@ -648,6 +648,7 @@ exports.addFeeDetails = async (req, res) => {
         feeTid: req.body.feeTid,
         feeReciept: req.body.feeReciept,
         feeDate: req.body.feeDate,
+        feeAmount: req.body.feeAmount,
         currentStep: 10,
       },
       { where: { id: req.params.id } }

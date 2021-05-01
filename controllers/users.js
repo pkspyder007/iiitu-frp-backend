@@ -19,6 +19,7 @@ const registerSchema = {
 const registerCheck = v.compile(registerSchema);
 
 exports.login = async (req, res) => {
+  
   const result = await db.User.findOne({ where: { email: req.body.email } });
 
   if (!result) {

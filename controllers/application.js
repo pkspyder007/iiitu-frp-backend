@@ -580,7 +580,8 @@ exports.lockApp = async (req, res) => {
     if (!app.PersonalDetail) {
       errors.push("Personal Information not provided.");
     }
-    if(!app.GeneralQues)
+    console.log(app)
+    if(!app.GeneralQue)
       errors.push("General Questions not provided.");
     
     const educations = app.AcadQualifications.map((e) => e.education);

@@ -149,11 +149,11 @@
     <div id="ii1">2.Job Ad. No.</div><span id="job">Assistant</span>
   </div>
   <div id="inner-item">
-    <div id="ii1">3.School(s)</div>
+    <div id="ii1">3.School</div>
     <div id="school" style="display: flex;flex-direction: column;"></div>
   </div>
   <div id="inner-item">
-    <div id="ii1">4.Deptartment</div>
+    <div id="ii1">4.Department</div>
     <div id="dept" style="display: flex;flex-direction: column;"></div>
   </div>
 </div>
@@ -189,7 +189,7 @@
     <div id="ii1">9.Permanent Address</div>
     <div id="perAddress" style="width:150px;margin-right: 120px;"></div>
   </div>
-  <h2>Fee Detailes</h2>
+  <h2>Fee Details</h2>
   <div id="inner-item" style="margin-bottom: 15px;">
     <div id="ii1">1.Tansaction Id</div>
     <div id="tid" style="width:150px;margin-right: 120px;"></div>
@@ -204,7 +204,7 @@
       <div class="grid-item">Degree/Title</div>
       <div class="grid-item">Branch/Specialization</div>
       <div class="grid-item">University/College</div>
-      <div class="grid-item">Year Of Complition</div>
+      <div class="grid-item">Year Of Completion</div>
       <div class="grid-item">CGPA/Marks</div>
     </div>
   </div>
@@ -265,13 +265,13 @@
         <div class="grid-item">In Progress</div>
         <div class="grid-item" id="pgp">0</div>
       </div>
-      <div class="gridRInside">
+     <!-- <div class="gridRInside">
         <div class="grid-item">Status</div>
         <div class="grid-item">No</div>
         <div class="grid-item">Completed</div>
         <div class="grid-item" id="uc">0</div>
         <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="up">0</div>
+        <div class="grid-item" id="up">0</div>-->
       </div>
     </div>
   </div>
@@ -565,8 +565,8 @@
   })
   set('pc',phdc)
   set('ppp',phdp)
-  set('uc',ugc)
-  set('up',ugp)
+  //set('uc',ugc)
+  //set('up',ugp)
   set('pgc',pgc)
   set('pgp',pgp)
   }
@@ -586,7 +586,7 @@
   set('dept',data.dept||'-')
   set('name',data.PersonalDetail.name)
   let dobArr=data.PersonalDetail.DOB.split('-')
-  let srt=dobArr[2]+"-"+dobArr[1]+"-"+dobArr[0]
+  let srt=dobArr[2]+dobArr[1]+dobArr[0]
   set('dob',srt||'-')
   set('sex',data.PersonalDetail.sex)
   set('name',data.PersonalDetail.name)
@@ -599,7 +599,8 @@
   fetch(`/jobs/getById/${data.jobId}`).then((res) =>
   res.json()
   ).then(data => {
-  document.getElementById('school').innerHTML = data.job.title
+    document.getElementById('school').innerHTML = data.job.school
+    document.getElementById('dept').innerHTML = data.job.dept
   }).catch((err) => {
   console.log(err)
   })
@@ -612,11 +613,11 @@
   AddOtherInfo("otherInfo",data.OtherInfos)
   AddRef("refrees",data.Referees)
   //general Questions
-  set('gone',data.GeneralQue.one==="NA"?"NO":data.GeneralQue.one)
-  set('gtwo',data.GeneralQue.two==="NA"?"NO":data.GeneralQue.two)
-  set('gthree',data.GeneralQue.three==="NA"?"NO":data.GeneralQue.three)
-  set('gfour',data.GeneralQue.four==="NA"?"NO":data.GeneralQue.four)
-  set('gfive',data.GeneralQue.five==="NA"?"NO":data.GeneralQue.five)
+  set('gone',data.GeneralQue&&(data.GeneralQue?.one!=="NA"||data.GeneralQue?.one!=="")?data.GeneralQue?.one:"NO")
+  set('gtwo',data.GeneralQue&&(data.GeneralQue?.two!=="NA"||data.GeneralQue?.two!=="")?data.GeneralQue?.two:"NO")
+  set('gthree',data.GeneralQue&&(data.GeneralQue?.three!=="NA"||data.GeneralQue?.three!=="")?data.GeneralQue?.three:"NO")
+  set('gfour',data.GeneralQue&&(data.GeneralQue?.four!=="NA"||data.GeneralQue?.four!=="")?data.GeneralQue?.four:"NO")
+  set('gfive',data.GeneralQue&&(data.GeneralQue?.five!=="NA"||data.GeneralQue?.five!=="")?data.GeneralQue?.five:"NO")
 
   set("job", data.adNo)
   set("dobProof",data.PersonalDetail.dobDoc==""||!data.PersonalDetail.dobDoc?"NO":"YES")

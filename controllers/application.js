@@ -575,11 +575,14 @@ exports.lockApp = async (req, res) => {
     const errors = [];
     const app = await db.Application.findOne({
       where: { id: req.params.id, userId: req.user.userId },
-      include: [{ model: db.PersonalDetail }, { model: db.AcadQualification }],
+      include: [{ model: db.PersonalDetail }, { model: db.AcadQualification },{model:db.GeneralQues}],
     });
     if (!app.PersonalDetail) {
       errors.push("Personal Information not provided.");
     }
+    if(!app.GeneralQues)
+      errors.push("General Questions not provided.");
+    
     const educations = app.AcadQualifications.map((e) => e.education);
 
     console.log(app.eduMode);

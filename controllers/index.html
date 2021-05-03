@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+  width: 900px;
+  margin: auto;
+  }
+  .logo {
+  top: 15px;
+  left: 15px;
+  position: absolute;
+  width: 120px;
+  height: 120px
+  }
+  span.print {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+  color: blue;
+  font-weight: bold;
+  }
+  h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  }
+  #inner {
+  padding-left: 40px;
+  position: relative;
+  }
+  h1 {
+  font-size: 20px;
+  }
+  #inner-item {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  margin: 10px
+  }
+  #ii1 {
+  width: 170px;
+  margin-right: 30px;
+  }
+  .grid {
+  display: grid;
+  grid-template-columns: 160px 160px 160px 120px 130px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .grid1 {
+  display: grid;
+  grid-template-columns: 210px 130px 50px 50px 80px 210px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .grid2 {
+  display: grid;
+  grid-template-columns: 90px 230px 230px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridResearch {
+  display: grid;
+  grid-template-columns: 270px 270px 270px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridsop{
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridsopi{
+  display: grid;
+  grid-template-columns: 240px 80px 80px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridpub{
+  display: grid;
+  grid-template-columns: 200px 500px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridpubii{
+  display: grid;
+  grid-template-columns: 125px 125px 125px 125px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridRInside{
+  display: grid;
+  grid-template-columns: 210px 60px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  #grid-item {
+  border: solid black 1.5px;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center
+  }
+  .grid-item {
+  border: solid black 1.5px;
+  padding: 10px;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center
+  }
+  .gridOther{
+    display: grid;
+    grid-template-columns: 165px 125px 125px 125px 125px;
+    grid-column-gap: 0;
+    column-gap: 0;
+  }
+  .gridRefrees{
+    display: grid;
+    grid-template-columns: 125px 125px 125px 125px 125px;
+    grid-column-gap: 0;
+    column-gap: 0;
+  }
+</style>
+<div style="text-align: center;margin: auto;border-bottom: solid black 1px;padding:10px;position:relative"><img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png">
+  <h1>Indain Institute of Information Technology Una</h1>
+  <h1>Himachal Pradesh</h1>
+  <h1 style="font-size: 15px;font-weight: 500;">(An Institute of National Importation Under MoE)</h1><span class="print" onclick="window.print()">Print</span>
+</div>
+<h2>Application For Faculty Position</h2>
+<div id="inner" style="position: relative;">
+  
+  <div id="inner-item">
+    <div id="ii1">1.Application ID</div><span id="ref">AP2019-12-0001</span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">2 Job Ad. No.</div><span id="job">Assistant</span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">3.School(s)</div>
+    <div id="school" style="display: flex;flex-direction: column;"></div>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">4.Deptartment</div>
+    <div id="dept" style="display: flex;flex-direction: column;"></div>
+  </div>
+</div>
+<h2>Personal Information</h2>
+<div id="inner">
+  <div id="inner-item">
+    <div id="ii1">1.Name</div><span id="name"> </span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">2.Date of Birth</div><span id="dob"></span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">3.Gender</div><span id="sex"></span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">4.Nationality</div><span id="nationality"></span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">5.Marital Status</div><span id="martialStatus"></span>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">6.Cateogary</div><span id="category"></span>
+  </div>
+  <div id="inner-item" style="margin-bottom: 30px;">
+    <div id="ii1">7.Phone</div>
+    <div id="phone" style="width:150px;margin-right: 120px;"></div>
+  </div>
+  <div id="inner-item" style="margin-bottom: 30px;">
+    <div id="ii1">8.Correspondence Address</div>
+    <div id="corAddress" style="width:150px;margin-right: 120px;"></div>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">9.Permanent Address</div>
+    <div id="perAddress" style="width:150px;margin-right: 120px;"></div>
+  </div>
+  <h2>Fee Detailes</h2>
+  <div id="inner-item" style="margin-bottom: 15px;">
+    <div id="ii1">1  Tansition Id</div>
+    <div id="tid" style="width:150px;margin-right: 120px;"></div>
+  </div>
+  <div id="inner-item" style="margin-bottom: 15px;">
+    <div id="ii1">2  Payment Date</div>
+    <div id="pd" style="width:150px;margin-right: 120px;"></div>
+  </div>
+  <h2>Academic Qualificatiosn</h2>
+  <div style="margin:auto;width: min-content;">
+    <div class="grid" id="acad">
+      <div class="grid-item">Degree/Title</div>
+      <div class="grid-item">Branch/spelization</div>
+      <div class="grid-item">University/ College</div>
+      <div class="grid-item">Year Of Complition</div>
+      <div class="grid-item">CGPA/ Marks</div>
+    </div>
+  </div>
+  <h2>Academic Exeperience</h2>
+  <div style="margin:auto;width: min-content;">
+    <div class="grid1" id="acadexp">
+      <div class="grid-item">University/Organization</div>
+      <div class="grid-item">Desination</div>
+      <div class="grid-item">from</div>
+      <div class="grid-item">to</div>
+      <div class="grid-item">Monthaly Salary</div>
+      <div class="grid-item">Nature of Duties</div>
+    </div>
+  </div>
+  <h2 style="margin-top:200px">Industrial Exeperience</h2>
+  <div style="margin:auto;width: min-content">
+    <div class="grid1" id="indexp">
+      <div class="grid-item">University/Organization</div>
+      <div class="grid-item">Desination</div>
+      <div class="grid-item">from</div>
+      <div class="grid-item">to</div>
+      <div class="grid-item">Monthaly Salary</div>
+      <div class="grid-item">Nature of Duties</div>
+    </div>
+  </div>
+  <h2 style="margin-top:80px">Research Profile</h2>
+  <h2 style="margin-top:20px;font-size: 20px;">Sponsored Research Project</h2>
+  <div style="margin: auto;width: min-content;">
+    <div class="gridsop" id="sop">
+      <div class="grid-item">Title</div>
+      <div class="grid-item">Sponsor</div>
+      <div class="grid-item">Amount</div>
+      <div class="grid-item">Duration</div>
+      <div class="grid-item">Start</div>
+      <div class="grid-item">End</div>
+      <div class="grid-item">Outcome</div>
+    </div>
+  </div>
+  <h2 style="margin-top:60px;font-size: 20px;">Thesis Supervised</h2>
+  <div style="margin:auto;width: min-content">
+    <div class="gridResearch" id="thesis">
+      <div class="grid-item">Phd</div>
+      <div class="grid-item">PG</div>
+      <div class="grid-item">UG</div>
+      <div class="gridRInside">
+        <div class="grid-item">Status</div>
+        <div class="grid-item">No</div>
+        <div class="grid-item">Completed</div>
+        <div class="grid-item" id="pc">0</div>
+        <div class="grid-item">In Progress</div>
+        <div class="grid-item" id="ppp">0</div>
+      </div>
+      <div class="gridRInside">
+        <div class="grid-item">Status</div>
+        <div class="grid-item">No</div>
+        <div class="grid-item">Completed</div>
+        <div class="grid-item" id="pgc">0</div>
+        <div class="grid-item">In Progress</div>
+        <div class="grid-item" id="pgp">0</div>
+      </div>
+      <div class="gridRInside">
+        <div class="grid-item">Status</div>
+        <div class="grid-item">No</div>
+        <div class="grid-item">Completed</div>
+        <div class="grid-item" id="uc">0</div>
+        <div class="grid-item">In Progress</div>
+        <div class="grid-item" id="up">0</div>
+      </div>
+    </div>
+  </div>
+  <h2 style="margin-top:60px;font-size: 20px;">Publications</h2>
+  <div style="margin:auto;width: min-content">
+    <div class="gridpub" id="publications">
+      <div class="grid-item">Books/Chaptors: Published/Accepted</div>
+      <div class="gridpubi">
+        <div class="grid-item">Papers Published / Accepted in</div>
+        <div class="gridpubii">
+          <div class="grid-item">International Journals</div>
+          <div class="grid-item">National Journals</div>
+          <div class="grid-item">International Conferences</div>
+          <div class="grid-item">National Conferences</div>
+        </div>
+      </div>
+      <div class="grid-item" id="books">0</div>
+      <div class="gridpubii">
+        <div class="grid-item" id="ij">0</div>
+        <div class="grid-item" id="nj">0</div>
+        <div class="grid-item" id="ic">0</div>
+        <div class="grid-item" id="nc">0</div>
+      </div>
+    </div>
+  </div>
+  <h2>Other Information</h2>
+  <div style="margin:auto;width: min-content">
+      <div class="gridOther" id="otherInfo">
+          <div class="grid-item">Type</div>
+          <div class="grid-item">Title</div>
+          <div class="grid-item">Awarding Organization</div>
+          <div class="grid-item">Remarks</div>
+          <div class="grid-item">Date</div>
+      </div>
+  </div>
+  <h2>Refrees</h2>
+  <div style="margin:auto;width: min-content">
+      <div class="gridRefrees" id="refrees">
+          <div class="grid-item">Name</div>
+          <div class="grid-item">Designation</div>
+          <div class="grid-item">Correspondence Address</div>
+          <div class="grid-item">Phone</div>
+          <div class="grid-item">Email</div>
+      </div>
+  </div>
+  
+  <h2 style="margin-top:510px">Document Checklist</h2>
+  <div style="margin:auto;width: min-content;margin-bottom: 20px;">
+    <div class="grid2" id="indexp">
+      <div class="grid-item">S. NO.</div>
+      <div class="grid-item">Document Discription</div>
+      <div class="grid-item">Yes/No</div>
+      <div class="grid-item">1</div>
+      <div class="grid-item">DoB Proof</div>
+      <div class="grid-item" id="dobProof"></div>
+      <div class="grid-item">2</div>
+      <div class="grid-item">UG Degree </div>
+      <div class="grid-item" id="ugd"></div>
+      <div class="grid-item">3</div>
+      <div class="grid-item">PG Degree </div>
+      <div class="grid-item" id="pgd"></div>
+      <div class="grid-item">4</div>
+      <div class="grid-item">Phd Degree</div>
+      <div class="grid-item" id="phdd"></div>
+      <div class="grid-item">5</div>
+      <div class="grid-item">Category Certificate</div>
+      <div class="grid-item" id="cc"></div>
+      <div class="grid-item">6</div>
+      <div class="grid-item">Pwd Certificate</div>
+      <div class="grid-item" id="pwdc"></div>
+      <div class="grid-item">7</div>
+      <div class="grid-item">Govt issued id Card</div>
+      <div class="grid-item" id="gid"></div>
+      <div class="grid-item">8</div>
+      <div class="grid-item">Payment proof</div>
+      <div class="grid-item" id="pp"></div>
+    </div>
+  </div>
+ 
+  <div style="font-size: 20px;font-weight: 600;margin-top: 150px;">Declaration to be Signed by the Candidate</div>
+  <div style="padding-left:15px ;margin-top: 10px;margin-bottom: 20px;font-size: 17px;">
+    I hearby declare that the entries in this form are true to the best of my knowledge and belief. If at any
+    time I am found to have concealed any material/ information or given any false detailes, my appointment
+    shall be liable to be summarily trminated without notice or compensation.
+  </div>
+  <div style="width: 80%;display: flex;flex-direction: row;justify-content: space-between;margin-bottom: 30px;margin-top: 60px;">
+    <div style="display: flex;flex-direction: column;">
+      <div style="margin-bottom: 5px;">Date:</div>
+      <div>Place:</div>
+    </div>
+    <div style="display: flex;flex-direction: column;">
+      <div style="font-weight: 700;margin-bottom: 20px;">Signature of Applicant</div>
+      <div>Name:</div>
+    </div>
+  </div>
+  <div style="display: flex;flex-direction: row;padding:8px;font-size: 17px;">Note:
+    <div style="margin-left: 20px;">This form duly signed along with all the necessary self altested documents much reach to the <span style="font-weight: 600;">&quot;The Registrar, Central Block, NIT Campus, Hamirpur,H.P. 177005&quot;</span></div>
+  </div>
+  <div style="top:20px;right:20px;position: absolute;"><img id="per" src="" style="width:200px;height:250px"></div>
+</div>
+<script>
+  function addTable(to, data) {
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.education
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.subject
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.institution
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.year
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.percentage || "-"
+  grid.appendChild(div5)
+  })
+  }
+  function addExp(to, data) {
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.org
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.designation
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.from
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.to
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.salary
+  grid.appendChild(div5)
+  const div6 = document.createElement('div')
+  div6.id = "grid-item"
+  div6.innerHTML = obj.natureOfDuties
+  grid.appendChild(div6)
+  })
+  }
+  function Sponsored(to,data){
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.title
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.sponsor
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.amount
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.duration
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.start
+  grid.appendChild(div5)
+  const div6 = document.createElement('div')
+  div6.id = "grid-item"
+  div6.innerHTML = obj.end
+  grid.appendChild(div6)
+  const div7 = document.createElement('div')
+  div7.id = "grid-item"
+  div7.innerHTML = obj.outcome
+  grid.appendChild(div7)
+  })
+  }
+  function set(id,val){
+  document.getElementById(id).innerHTML = val
+  }
+  function AddOtherInfo(to,data){
+    const grid = document.getElementById(to)
+    data.map((obj) => {
+      console.log("other",obj)
+      const div = document.createElement('div')
+      div.innerHTML = obj.type
+      div.id = "grid-item"
+      grid.appendChild(div)
+      const div2 = document.createElement('div')
+      div2.id = "grid-item"
+      div2.innerHTML = obj.title
+      grid.appendChild(div2)
+      const div3 = document.createElement('div')
+      div3.id = "grid-item"
+      div3.innerHTML = obj.by
+      grid.appendChild(div3)
+      const div4 = document.createElement('div')
+      div4.innerHTML = obj.amount
+      div4.id = "grid-item"
+      grid.appendChild(div4)
+      const div5 = document.createElement('div')
+      div5.id = "grid-item"
+      div5.innerHTML = obj.date
+      grid.appendChild(div5)
+    })
+  }
+  function AddRef(to,data){
+    const grid = document.getElementById(to)
+    data.map((obj) => {
+      const div = document.createElement('div')
+      div.innerHTML = obj.name
+      div.id = "grid-item"
+      grid.appendChild(div)
+      const div2 = document.createElement('div')
+      div2.id = "grid-item"
+      div2.innerHTML = obj.designation
+      grid.appendChild(div2)
+      const div3 = document.createElement('div')
+      div3.id = "grid-item"
+      div3.innerHTML = obj.corAddress
+      grid.appendChild(div3)
+      const div4 = document.createElement('div')
+      div4.innerHTML = obj.phone
+      div4.id = "grid-item"
+      grid.appendChild(div4)
+      const div5 = document.createElement('div')
+      div5.id = "grid-item"
+      div5.innerHTML = obj.email
+      grid.appendChild(div5)
+    })
+  }
+  function publication(data){
+  console.log(data)
+  set("books",data[0]?.books||0)
+  set("ij",data[0]?.iJournals||0)
+  set("nj",data[0]?.nJournals||0)
+  set("ic",data[0]?.iConf||0)
+  set("nc",data[0]?.nConf||0)
+  }
+  function Thesis(app){
+  console.log(app)
+  let phdc=0,phdp=0,ugc=0,ugp=0,pgc=0,pgp=0
+  app.Theses?.map((obj)=>{
+  if(obj.status==="completed"&&obj.type=="PHD")
+  phdc++;
+  else if(obj.status===""&&obj.type=="PHD")
+  phdp++;
+  if(obj.status==="completed"&&obj.type=="PG")
+  pgc++;
+  else if(obj.status===""&&obj.type=="PG")
+  pgp++;
+  if(obj.status==="completed"&&obj.type=="UG")
+  ugc++;
+  else if(obj.status===""&&obj.type=="UG")
+  ugp++;
+  })
+  set('pc',phdc)
+  set('ppp',phdp)
+  set('uc',ugc)
+  set('up',ugp)
+  set('pgc',pgc)
+  set('pgp',pgp)
+  }
+  function callApi(id) {
+  //alert("hi")
+  let data;
+  fetch(`/applications/${id}`).then((response) =>
+  response.json()
+  ).then((dat) => {
+  data = dat.app
+  set('ref',data.refNum)
+  set('school',data.school)
+  set('dept',data.dept||'-')
+  set('name',data.PersonalDetail.name)
+  let dobArr=data.PersonalDetail.DOB.split('-')
+  let srt=dobArr[2]+dobArr[1]+dobArr[0]
+  
+  set('dob',srt||'-')
+  set('sex',data.PersonalDetail.sex)
+  set('name',data.PersonalDetail.name)
+  set('nationality',data.PersonalDetail.nationality)
+  set('martialStatus',data.PersonalDetail.martialStatus)
+  set('phone',data.PersonalDetail.phone||'-')
+  set('corAddress',data.PersonalDetail.corAddress)
+  set('perAddress',data.PersonalDetail.perAddress)
+  set('category',data.PersonalDetail.category)
+  fetch(`/jobs/getById/${data.jobId}`).then((res) =>
+  res.json()
+  ).then(data => {
+  document.getElementById('school').innerHTML = data.job.title
+  }).catch((err) => {
+  console.log(err)
+  })
+  addTable('acad', data.AcadQualifications)
+  addExp('acadexp', data.AcadExperiences)
+  addExp('indexp', data.IndustryExps)
+  Thesis(data)
+  Sponsored("sop",data.Research)
+  publication(data.Publications)
+  AddOtherInfo("otherInfo",data.OtherInfos)
+  AddRef("refrees",data.Referees)
+  //general Questions
+  set('gone',data.GeneralQue.one==="NA"?"NO":data.GeneralQue.one)
+  set('gtwo',data.GeneralQue.two==="NA"?"NO":data.GeneralQue.two)
+  set('gthree',data.GeneralQue.three==="NA"?"NO":data.GeneralQue.three)
+  set('gfour',data.GeneralQue.four==="NA"?"NO":data.GeneralQue.four)
+  set('gfive',data.GeneralQue.five==="NA"?"NO":data.GeneralQue.five)
+
+  set("job", data.adNo)
+  set("dobProof",data.PersonalDetail.dobDoc==""||!data.PersonalDetail.dobDoc?"NO":"YES")
+  set("cc",data.PersonalDetail.catDoc==""||!data.PersonalDetail.catDoc?"NO":"YES")
+  set("pwdc",data.PersonalDetail.pwdDoc==""||!data.PersonalDetail.pwdDoc?"NO":"YES")
+  set("gid",data.PersonalDetail.govtIdCard==""||!data.PersonalDetail.govtIdCard?"NO":"YES")
+  set('pp',data.feeReceipt != "" ?"YES":"NO")
+  set('tid',data.feeTid||"-")
+  set('pd',data.feeDate||"-")
+  data.AcadQualifications.map(obj=>{
+  if(obj.education==="UG"){
+  set("ugd",obj.doc==""||!obj.doc?"NO":"YES")
+  }else if(obj.education==="PG"){
+  set("pgd",obj.doc==""||!obj.doc?"NO":"YES")
+  }else if(obj.education == "PHD"){
+  set("phdd",obj.doc==""||!obj.doc?"NO":"YES")
+  }
+  })
+  let str=data.PersonalDetail.photo.split('uploads');
+  let finalImage = str[1];
+  if(str[1][0] === "\\") {
+  finalImage = str[1].split("\\").join("/")
+  }
+  console.log(finalImage)
+  document.getElementById('per').src=finalImage
+  //- setTimeout(() => {
+  //-   window.print()
+  //- }).catch(err => {
+  //-   console.log(err)
+  //- },500)
+  })
+  return data
+  }
+  //alert("j")
+  let data = callApi()
+</script>

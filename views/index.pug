@@ -1,8 +1,8 @@
 doctype html
 head
   meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
   title Document
 style.
   body {
@@ -120,6 +120,18 @@ style.
   justify-content: center;
   align-items: center
   }
+  .gridOther{
+  display: grid;
+  grid-template-columns: 125px 125px 125px 125px 125px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
+  .gridRefrees{
+  display: grid;
+  grid-template-columns: 125px 125px 125px 125px 125px;
+  grid-column-gap: 0;
+  column-gap: 0;
+  }
 div(style='text-align: center;margin: auto;border-bottom: solid black 1px;padding:10px;position:relative')
   img.logo(src='https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png')
   h1 Indain Institute of Information Technology Una
@@ -127,7 +139,7 @@ div(style='text-align: center;margin: auto;border-bottom: solid black 1px;paddin
   h1(style='font-size: 15px;font-weight: 500;') (An Institute of National Importation Under MoE)
   span.print(onclick='window.print()') Print
 h2 Application For Faculty Position
-#inner
+#inner(style='position: relative;')
   #inner-item
     #ii1 1.Application ID
     span#ref AP2019-12-0001
@@ -252,11 +264,27 @@ h2 Personal Information
           .grid-item International Conferences
           .grid-item National Conferences
       #books.grid-item 0
-      .gridpubii
-        #ij.grid-item 0
-        #nj.grid-item 0
-        #ic.grid-item 0
-        #nc.grid-item 0
+        .gridpubii
+          #ij.grid-item 0
+          #nj.grid-item 0
+          #ic.grid-item 0
+          #nc.grid-item 0
+  h2 Other Information
+  div(style='margin:auto;width: min-content')
+    #otherInfo.gridOther
+      .grid-item Type
+      .grid-item Title
+      .grid-item Awarding Organization
+      .grid-item Remarks
+      .grid-item Date
+  h2 Refrees
+  div(style='margin:auto;width: min-content')
+    #refrees.gridRefrees
+      .grid-item Name
+      .grid-item Designation
+      .grid-item Correspondence Address
+      .grid-item Phone
+      .grid-item Email
   h2(style='margin-top:510px') Document Checklist
   div(style='margin:auto;width: min-content;margin-bottom: 20px;')
     #indexp.grid2
@@ -287,8 +315,6 @@ h2 Personal Information
       .grid-item 8
       .grid-item Payment proof
       #pp.grid-item
-  div(style='top:20px;right:20px;position: absolute;')
-    img#per(src='' style='width:200px;height:250px')
   div(style='font-size: 20px;font-weight: 600;margin-top: 150px;') Declaration to be Signed by the Candidate
   div(style='padding-left:15px ;margin-top: 10px;margin-bottom: 20px;font-size: 17px;')
     | I hearby declare that the entries in this form are true to the best of my knowledge and belief. If at any
@@ -306,6 +332,7 @@ h2 Personal Information
     div(style='margin-left: 20px;')
       | This form duly signed along with all the necessary self altested documents much reach to the 
       span(style='font-weight: 600;') &quot;The Registrar, Central Block, NIT Campus, Hamirpur,H.P. 177005&quot;
+
 script.
   function addTable(to, data) {
   const grid = document.getElementById(to)
@@ -397,6 +424,54 @@ script.
   function set(id,val){
   document.getElementById(id).innerHTML = val
   }
+  function AddOtherInfo(to,data){
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.type
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.title
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.by
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.amount
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.date
+  })
+  }
+  function AddRef(to,data){
+  const grid = document.getElementById(to)
+  data.map((obj) => {
+  const div = document.createElement('div')
+  div.innerHTML = obj.name
+  div.id = "grid-item"
+  grid.appendChild(div)
+  const div2 = document.createElement('div')
+  div2.id = "grid-item"
+  div2.innerHTML = obj.designation
+  grid.appendChild(div2)
+  const div3 = document.createElement('div')
+  div3.id = "grid-item"
+  div3.innerHTML = obj.corAddress
+  grid.appendChild(div3)
+  const div4 = document.createElement('div')
+  div4.innerHTML = obj.phone
+  div4.id = "grid-item"
+  grid.appendChild(div4)
+  const div5 = document.createElement('div')
+  div5.id = "grid-item"
+  div5.innerHTML = obj.email
+  })
+  }
   function publication(data){
   console.log(data)
   set("books",data[0]?.books||0)
@@ -464,6 +539,14 @@ script.
   Thesis(data)
   Sponsored("sop",data.Research)
   publication(data.Publications)
+  AddOtherInfo("otherInfo",data.OtherInfos)
+  AddRef("refrees",data.Referees)
+  //general Questions
+  set('gone',data.GeneralQue.one==="NA"?"NO":data.GeneralQue.one)
+  set('gtwo',data.GeneralQue.two==="NA"?"NO":data.GeneralQue.two)
+  set('gthree',data.GeneralQue.three==="NA"?"NO":data.GeneralQue.three)
+  set('gfour',data.GeneralQue.four==="NA"?"NO":data.GeneralQue.four)
+  set('gfive',data.GeneralQue.five==="NA"?"NO":data.GeneralQue.five)
   set("job", data.adNo)
   set("dobProof",data.PersonalDetail.dobDoc==""||!data.PersonalDetail.dobDoc?"NO":"YES")
   set("cc",data.PersonalDetail.catDoc==""||!data.PersonalDetail.catDoc?"NO":"YES")
@@ -483,8 +566,8 @@ script.
   })
   let str=data.PersonalDetail.photo.split('uploads');
   let finalImage = str[1];
-  if(str[1][0] === "\\") {
-  finalImage = str[1].split("\\").join("/")
+  if(str[1][0] === "\\\") {
+  finalImage = str[1].split("\\\").join("/")
   }
   console.log(finalImage)
   document.getElementById('per').src=finalImage
@@ -497,4 +580,4 @@ script.
   return data
   }
   //alert("j")
-  let data = callApi("#{msg}")
+  let data = callApi("1")

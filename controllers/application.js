@@ -490,6 +490,7 @@ exports.addGeneral = async (req, res) => {
     const existsCheck = await db.GeneralQues.findOne({
       where: { appId: req.params.id },
     });
+    
     if (existsCheck) {
       return res.status(400).json({
         msg: "Data already exists.",
@@ -500,6 +501,8 @@ exports.addGeneral = async (req, res) => {
         ],
       });
     }
+
+    
 
     const data = await db.GeneralQues.create({
       ...req.body,
@@ -690,7 +693,7 @@ exports.GenPdf = async (req, res) => {
     });
     if (!app) return res.status(400).json({ msg: "Application not found" });
     console.log(app.PersonalDetail.dataValues);
-    return res.render("index", { msg: req.params.id });
+    return res.sendFile(path.join(__dirname, '../index.html'));
   } catch (error) {
     return res.status(400).json({ msg: error.message });
   }

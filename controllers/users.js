@@ -6,6 +6,7 @@ const { v4: uuid } = require("uuid");
 const { sendEmail } = require("../utils/email");
 const verifyEmailTemplate = require("../utils/verifyEmailTemplate");
 const salt = bcrypt.genSaltSync(10);
+const path = require("path");
 
 const v = new Validator();
 
@@ -113,10 +114,7 @@ exports.verifyEmail = async (req, res) => {
           "Could not verify email (INVALID TOKEN). Please contact Administrator",
       });
     }
-
-    res.json({
-      msg: "Email verified. You can Login now.",
-    });
+    return res.sendFile(path.join(__dirname, '../Success.html'))
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }

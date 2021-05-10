@@ -57,19 +57,19 @@
   }
   .grid1 {
     display: grid;
-    grid-template-columns: 210px 130px 50px 50px 80px 210px;
+    grid-template-columns: auto auto auto auto auto auto auto;
     grid-column-gap: 0;
     column-gap: 0;
   }
   .grid2 {
     display: grid;
-    grid-template-columns: 90px 230px 230px;
+    grid-template-columns: 90px 230px 230px auto;
     grid-column-gap: 0;
     column-gap: 0;
   }
   .gridResearch {
     display: grid;
-    grid-template-columns: 270px 270px;
+    grid-template-columns: 270px 270px 270px;
     grid-column-gap: 0;
     column-gap: 0;
   }
@@ -132,6 +132,20 @@
     grid-template-columns: 125px 125px 125px 125px auto;
     grid-column-gap: 0;
     column-gap: 0;
+  }
+  @media print{
+    #acadmicQualificatons{
+      page-break-before: always;
+    }
+    #indexp{
+      page-break-after: always;
+    }
+    #otherInfo{
+      page-break-after: always;
+    }
+    #DocumentChecklist{
+      page-break-before: always;
+    }
   }
 </style>
 <div
@@ -220,7 +234,7 @@
     <div id="ii1">2.Payment Date</div>
     <div id="pd" style="width: 150px; margin-right: 120px"></div>
   </div>
-  <h2>Academic Qualifications</h2>
+  <h2 id="acadmicQualificatons">Academic Qualifications</h2>
   <h3 style="text-align: center; font-weight: 500">
     <span>Education Mode : <span id="EduMode"></span> Mode</span>
   </h3>
@@ -242,6 +256,7 @@
       <div class="grid-item">to</div>
       <div class="grid-item">Monthly Salary</div>
       <div class="grid-item">Nature of Duties</div>
+      <div class="grid-item">NOC/Experience</div>
     </div>
   </div>
   <h2 style="margin-top: 100px">Industrial Experience</h2>
@@ -253,6 +268,7 @@
       <div class="grid-item">to</div>
       <div class="grid-item">Monthly Salary</div>
       <div class="grid-item">Nature of Duties</div>
+      <div class="grid-item">NOC/Experience</div>
     </div>
   </div>
   <h2 style="margin-top: 80px">Research Profile</h2>
@@ -273,7 +289,7 @@
     <div class="gridResearch" id="thesis">
       <div class="grid-item">Phd</div>
       <div class="grid-item">PG</div>
-      <!--<div class="grid-item">UG</div>-->
+      <div class="grid-item">UG</div>
       <div class="gridRInside">
         <div class="grid-item">Status</div>
         <div class="grid-item">No</div>
@@ -290,13 +306,13 @@
         <div class="grid-item">In Progress</div>
         <div class="grid-item" id="pgp">0</div>
       </div>
-      <!-- <div class="gridRInside">
+      <div class="gridRInside">
         <div class="grid-item">Status</div>
         <div class="grid-item">No</div>
         <div class="grid-item">Completed</div>
         <div class="grid-item" id="uc">0</div>
         <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="up">0</div>-->
+        <div class="grid-item" id="up">0</div>
     </div>
   </div>
 
@@ -322,7 +338,7 @@
       </div>
     </div>
   </div>
-  <h2 style="margin-top: 290px">Other Information</h2>
+  <h2 style="margin-top: 80px">Other Information</h2>
   <div style="margin: auto; width: min-content">
     <div class="gridOther" id="otherInfo">
       <div class="grid-item">Type</div>
@@ -332,7 +348,7 @@
       <div class="grid-item">Date</div>
     </div>
   </div>
-  <h2>Refrees</h2>
+  <h2 style="margin-top: 80px;">Refrees</h2>
   <div style="margin: auto; width: min-content">
     <div class="gridRefrees" id="refrees">
       <div class="grid-item">Name</div>
@@ -343,7 +359,7 @@
     </div>
   </div>
 
-  <h2>General Questions</h2>
+  <h2 id="generalQuestions" style="margin-top: 100px;">General Questions</h2>
   <div>
     <div style="width: 90%">
       1. Has there been any break in your academic career? If so, give details
@@ -372,42 +388,55 @@
     <div style="margin: 15px" id="gfive"></div>
   </div>
 
-  <h2 style="margin-top: 510px">Document Checklist</h2>
+  <h2 id="DocumentChecklist" style="margin-top: 80px">Document Checklist</h2>
   <div style="margin: auto; width: min-content; margin-bottom: 20px">
-    <div class="grid2" id="indexp">
+    <div class="grid2" >
       <div class="grid-item">S. NO.</div>
       <div class="grid-item">Document Discription</div>
       <div class="grid-item">Yes/No</div>
+      <div class="grid-item">Document Link</div>
       <div class="grid-item">1</div>
       <div class="grid-item">DoB Proof</div>
       <div class="grid-item" id="dobProof"></div>
+      <div class="grid-item" id="dobProofLink"></div>
       <div class="grid-item">2</div>
       <div class="grid-item">UG Degree</div>
       <div class="grid-item" id="ugd"></div>
+      <div class="grid-item" id="ugdLink"></div>
       <div class="grid-item">3</div>
       <div class="grid-item">PG Degree</div>
       <div class="grid-item" id="pgd"></div>
+      <div class="grid-item" id="pgdLink"></div>
       <div class="grid-item">4</div>
       <div class="grid-item">Phd Degree</div>
       <div class="grid-item" id="phdd"></div>
+      <div class="grid-item" id="phddLink"></div>
       <div class="grid-item">5</div>
       <div class="grid-item">Category Certificate</div>
       <div class="grid-item" id="cc"></div>
+      <div class="grid-item" id="ccLink"></div>
       <div class="grid-item">6</div>
       <div class="grid-item">Pwd Certificate</div>
       <div class="grid-item" id="pwdc"></div>
+      <div class="grid-item" id="pwdcLink"></div>
       <div class="grid-item">7</div>
       <div class="grid-item">Govt issued id Card</div>
       <div class="grid-item" id="gid"></div>
+      <div class="grid-item" id="gidLink"></div>
       <div class="grid-item">8</div>
       <div class="grid-item">Payment proof</div>
       <div class="grid-item" id="pp"></div>
+      <div class="grid-item" id="ppLink"></div>
+      <div class="grid-item">9</div>
+      <div class="grid-item">Future Plan</div>
+      <div class="grid-item" id="futurePlandoc"></div>
+      <div class="grid-item" id="futurePlandocLink"></div>
     </div>
   </div>
   <div style="top: 20px; right: 20px; position: absolute">
     <img id="per" src="" style="width: 200px; height: 250px" />
   </div>
-  <div style="font-size: 20px; font-weight: 600; margin-top: 150px">
+  <div style="font-size: 20px; font-weight: 600; margin-top: 200px">
     Declaration to be Signed by the Candidate
   </div>
   <div
@@ -465,6 +494,29 @@
   </div>
 </div>
 <script>
+  function getStaticUrl(link) {
+  let str = link.split("uploads");
+  let finalImage = str[1];
+  if (str[1][0] === "\\") {
+    finalImage = str[1].split("\\").join("/");
+  }
+  return finalImage;
+}
+function createHref(id,link){
+  if(!link){
+    document.getElementById(id+"Link").innerHTML="-"
+    return "NO"
+  }
+  const a=document.createElement('a')
+  a.innerHTML="View Documant"
+  a.href="#"
+  a.onclick=()=>{
+    window.open(getStaticUrl(link))
+  }
+  document.getElementById(id+"Link").appendChild(a)
+  return "YES"
+}
+
   function addTable(to, data) {
     const grid = document.getElementById(to);
     data.map((obj) => {
@@ -517,6 +569,16 @@
       div6.id = "grid-item";
       div6.innerHTML = obj.natureOfDuties;
       grid.appendChild(div6);
+      const div7 = document.createElement("div");
+      div7.id = "grid-item";
+      const a=document.createElement('a')
+      a.innerHTML="View Documant"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(obj.doc))
+      }
+      div7.appendChild(a);
+      grid.appendChild(div7);
     });
   }
   function Sponsored(to, data) {
@@ -667,7 +729,7 @@
         setDept(data.dept);
         set("name", data.PersonalDetail.name);
         let dobArr = data.PersonalDetail.DOB.split("-");
-        let srt = dobArr[2] + dobArr[1] + dobArr[0];
+        let srt = dobArr[2] + "-" + dobArr[1] + "-" + dobArr[0];
         set("dob", srt || "-");
         set("sex", data.PersonalDetail.sex);
         set("name", data.PersonalDetail.name);
@@ -741,38 +803,45 @@
         set(
           "dobProof",
           data.PersonalDetail.dobDoc == "" || !data.PersonalDetail.dobDoc
-            ? "NO"
-            : "YES"
+            ?  createHref("dobProof",null)
+            : createHref("dobProof",data.PersonalDetail.dobDoc)
         );
         set(
           "cc",
           data.PersonalDetail.catDoc == "" || !data.PersonalDetail.catDoc
-            ? "NO"
-            : "YES"
+            ?  createHref("cc",null)
+            : createHref("cc",data.PersonalDetail.catDoc)
         );
         set(
           "pwdc",
           data.PersonalDetail.pwdDoc == "" || !data.PersonalDetail.pwdDoc
-            ? "NO"
-            : "YES"
+            ?  createHref("pwdc",null)
+            :createHref("pwdc",data.PersonalDetail.pwdDoc)
         );
+        set(
+          "futurePlandoc",
+          data.FuturePlan.doc == "" || !data.FuturePlan.doc
+            ?  createHref("futurePlandoc",null)
+            :createHref("futurePlandoc",data.FuturePlan.doc)
+        );
+        
         set(
           "gid",
           data.PersonalDetail.govtIdCard == "" ||
             !data.PersonalDetail.govtIdCard
-            ? "NO"
-            : "YES"
+            ?  createHref("gid",null)
+            : createHref("gid",data.PersonalDetail.govtIdCard)
         );
-        set("pp", data.feeReceipt != "" ? "YES" : "NO");
+        set("pp", data.feeReceipt != "" ? createHref("pp",data.feeReceipt) :  createHref("pp",null));
         set("tid", data.feeTid || "-");
         set("pd", data.feeDate || "-");
         data.AcadQualifications.map((obj) => {
           if (obj.education === "UG") {
-            set("ugd", obj.doc == "" || !obj.doc ? "NO" : "YES");
+            set("ugd", obj.doc == "" || !obj.doc ? createHref("ugd",null) : createHref("ugd",obj.doc));
           } else if (obj.education === "PG") {
-            set("pgd", obj.doc == "" || !obj.doc ? "NO" : "YES");
+            set("pgd", obj.doc == "" || !obj.doc ? createHref("pgd",null) : createHref("pgd",obj.doc));
           } else if (obj.education == "PHD") {
-            set("phdd", obj.doc == "" || !obj.doc ? "NO" : "YES");
+            set("phdd", obj.doc == "" || !obj.doc ? createHref("phdd",null) : createHref("phdd",obj.doc));
           }
         });
         let str = data.PersonalDetail.photo.split("uploads");

@@ -508,7 +508,7 @@ function createHref(id,link){
     return "NO"
   }
   const a=document.createElement('a')
-  a.innerHTML="View Documant"
+  a.innerHTML="View Document"
   a.href="#"
   a.onclick=()=>{
     window.open(getStaticUrl(link))
@@ -572,7 +572,7 @@ function createHref(id,link){
       const div7 = document.createElement("div");
       div7.id = "grid-item";
       const a=document.createElement('a')
-      a.innerHTML="View Documant"
+      a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
         window.open(getStaticUrl(obj.doc))
@@ -761,7 +761,7 @@ function createHref(id,link){
         set(
           "gone",
           data.GeneralQue &&
-            data.GeneralQue.one !== "NA" &&
+            data.GeneralQue?.one !== "NA" &&
             data.GeneralQue?.one !== ""
             ? data.GeneralQue?.one
             : "NO"
@@ -769,7 +769,7 @@ function createHref(id,link){
         set(
           "gtwo",
           data.GeneralQue &&
-            data.GeneralQue.two !== "NA" &&
+            data.GeneralQue?.two !== "NA" &&
             data.GeneralQue?.two !== ""
             ? data.GeneralQue?.two
             : "NO"
@@ -820,7 +820,7 @@ function createHref(id,link){
         );
         set(
           "futurePlandoc",
-          data.FuturePlan.doc == "" || !data.FuturePlan.doc
+          data.FuturePlan?.doc == "" || !data.FuturePlan?.doc
             ?  createHref("futurePlandoc",null)
             :createHref("futurePlandoc",data.FuturePlan.doc)
         );
@@ -832,7 +832,7 @@ function createHref(id,link){
             ?  createHref("gid",null)
             : createHref("gid",data.PersonalDetail.govtIdCard)
         );
-        set("pp", data.feeReceipt != "" ? createHref("pp",data.feeReceipt) :  createHref("pp",null));
+        set("pp", data.feeReciept !== "" ? createHref("pp",data.feeReciept) :  createHref("pp",null));
         set("tid", data.feeTid || "-");
         set("pd", data.feeDate || "-");
         data.AcadQualifications.map((obj) => {

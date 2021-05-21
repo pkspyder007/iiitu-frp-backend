@@ -56,7 +56,7 @@ exports.createApp = async (req, res) => {
 
 exports.addPersonalInfo = async (req, res) => {
   try {
-    if (req.body.pwd === "true") {
+    if (req.body.pwd === "Yes") {
       req.body.pwdDoc = req.files.pwdDoc[0]?.path;
     }
     if (req.body.category !== "UR") {

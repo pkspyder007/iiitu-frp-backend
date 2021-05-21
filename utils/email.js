@@ -14,7 +14,7 @@ const sendEmail = (to, sub, htmlContent) => {
         service: "gmail",
         auth: {
             type: "OAuth2",
-            user: "noreply-admissions@iiitu.ac.in", //your gmail account you used to set the project up in google cloud console"
+            user: "noreply-recruitment@iiitu.ac.in", //your gmail account you used to set the project up in google cloud console"
             clientId: process.env.GCID,
             clientSecret: process.env.GCSECRET,
             refreshToken: process.env.REFRESH_TOKEN,
@@ -23,7 +23,7 @@ const sendEmail = (to, sub, htmlContent) => {
     });
 
     const mailOptions = {
-        from: 'noreply-admissions@iiitu.ac.in', // sender
+        from: 'noreply-recruitment@iiitu.ac.in', // sender
         to: to, // receiver
         subject: sub, // Subject
         html: htmlContent // html body

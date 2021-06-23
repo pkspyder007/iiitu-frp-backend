@@ -103,6 +103,18 @@
     grid-column-gap: 0;
     column-gap: 0;
   }
+  .gridBestPaper{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 0;
+    column-gap: 0;
+  }
+  .gridStatement{
+    display: grid;
+    grid-template-columns: 500px 200px;
+    grid-column-gap: 0;
+    column-gap: 0;
+  }
   #grid-item {
     border: solid black 1.5px;
     padding: 10px;
@@ -143,8 +155,11 @@
     #otherInfo{
       page-break-after: always;
     }
-    #DocumentChecklist{
-      page-break-before: always;
+    #publications{
+      page-break-after: auto;
+    }
+    #statementOfPurpose{
+      page-break-after: always;
     }
   }
 </style>
@@ -218,7 +233,15 @@
     <div id="phone" style="width: 150px; margin-right: 120px"></div>
   </div>
   <div id="inner-item" style="margin-bottom: 30px">
-    <div id="ii1">8.Correspondence Address</div>
+    <div id="ii1">8.Alternative phone</div>
+    <div id="altphone" style="width: 150px; margin-right: 120px"></div>
+  </div>
+  <div id="inner-item" style="margin-bottom: 30px">
+    <div id="ii1">9.Email</div>
+    <div id="email" style="width: 150px; margin-right: 120px"></div>
+  </div>
+  <div id="inner-item" style="margin-bottom: 30px">
+    <div id="ii1">10.Correspondence Address</div>
     <div id="corAddress" style="width: 150px; margin-right: 120px"></div>
   </div>
   <div id="inner-item">
@@ -234,9 +257,13 @@
     <div id="ii1">2.Payment Date</div>
     <div id="pd" style="width: 150px; margin-right: 120px"></div>
   </div>
+  <div id="inner-item" style="margin-bottom: 15px">
+    <div id="ii1">3.Amount</div>
+    <div id="feeAmount" style="width: 150px; margin-right: 120px"></div>
+  </div>
   <h2 id="acadmicQualificatons">Academic Qualifications</h2>
   <h3 style="text-align: center; font-weight: 500">
-    <span>Education Mode : <span id="EduMode"></span> Mode</span>
+    <span>Education Mode : <span id="EduMode"></span></span>
   </h3>
   <div style="margin: auto; width: min-content">
     <div class="grid" id="acad">
@@ -319,7 +346,7 @@
   <h2 style="margin-top: 60px; font-size: 20px">Publications</h2>
   <div style="margin: auto; width: min-content">
     <div class="gridpub" id="publications">
-      <div class="grid-item">Books/Chaptors: Published/Accepted</div>
+      <div class="grid-item">Books/Chapters: Published/Accepted</div>
       <div class="gridpubi">
         <div class="grid-item">Papers Published / Accepted in</div>
         <div class="gridpubii">
@@ -348,7 +375,7 @@
       <div class="grid-item">Date</div>
     </div>
   </div>
-  <h2 style="margin-top: 80px;">Refrees</h2>
+  <h2 style="margin-top: 80px;">Referees</h2>
   <div style="margin: auto; width: min-content">
     <div class="gridRefrees" id="refrees">
       <div class="grid-item">Name</div>
@@ -358,6 +385,35 @@
       <div class="grid-item">Email</div>
     </div>
   </div>
+
+  <h2 style="margin-top: 80px">Best Papers</h2>
+  <div style="margin: auto; width: min-content">
+    <div class="gridBestPaper" id="bestpapers">
+      <div class="grid-item">Title</div>
+      <div class="grid-item">Year</div>
+      <div class="grid-item">Publication</div>
+      <div class="grid-item">Full Paper</div>
+      
+    </div>
+  </div>
+  
+  <h2 style="margin-top: 80px">Patents</h2>
+  <div style="margin: auto; width: min-content">
+    <div class="gridBestPaper" id="patents">
+      <div class="grid-item">Title</div>
+      <div class="grid-item">Year</div>
+      <div class="grid-item">Patent Number</div>
+      <div class="grid-item">Status</div>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 80px">Statement of Purpose</h2>
+  <div style="margin: auto; width: min-content">
+    <div class="gridStatement" id="statementOfPurpose">
+      
+    </div>
+  </div>
+
 
   <h2 id="generalQuestions" style="margin-top: 100px;">General Questions</h2>
   <div>
@@ -436,7 +492,7 @@
   <div style="top: 20px; right: 20px; position: absolute">
     <img id="per" src="" style="width: 200px; height: 250px" />
   </div>
-  <div style="font-size: 20px; font-weight: 600; margin-top: 200px">
+  <div style="font-size: 20px; font-weight: 600; margin-top: 200px;padding-top: 40px;">
     Declaration to be Signed by the Candidate
   </div>
   <div
@@ -517,6 +573,12 @@ function createHref(id,link){
   return "YES"
 }
 
+const deg={
+    'dual':"Dual Degree",
+    'dphd':"Direct Phd",
+    'normal':"Normal Mode"
+}
+
   function addTable(to, data) {
     const grid = document.getElementById(to);
     data.map((obj) => {
@@ -581,6 +643,73 @@ function createHref(id,link){
       grid.appendChild(div7);
     });
   }
+  function AddBestPapers(to,data){
+    const grid = document.getElementById(to);
+    data.map(obj=>{
+      const div = document.createElement("div");
+      div.innerHTML = obj.title;
+      div.id = "grid-item";
+      grid.appendChild(div);
+      const div2 = document.createElement("div");
+      div2.id = "grid-item";
+      div2.innerHTML = obj.yearOfPub;
+      grid.appendChild(div2);
+      const div3 = document.createElement("div");
+      div3.id = "grid-item";
+      div3.innerHTML = obj.publisher;
+      grid.appendChild(div3);
+      const div4 = document.createElement("div");
+      div4.id = "grid-item";
+      const a=document.createElement('a')
+      a.innerHTML="View Document"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(obj.doc))
+      }
+      div4.appendChild(a);
+      grid.appendChild(div4);
+    })
+  }
+  function AddPatents(to,data){
+    const grid = document.getElementById(to);
+    data.map(obj=>{
+      const div = document.createElement("div");
+      div.innerHTML = obj.name;
+      div.id = "grid-item";
+      grid.appendChild(div);
+      const div2 = document.createElement("div");
+      div2.id = "grid-item";
+      div2.innerHTML = obj.year;
+      grid.appendChild(div2);
+      const div3 = document.createElement("div");
+      div3.id = "grid-item";
+      div3.innerHTML = obj.num;
+      grid.appendChild(div3);
+      const div4 = document.createElement("div");
+      div4.id = "grid-item";
+      div4.innerHTML = obj.status;
+      grid.appendChild(div4);
+    })
+  }
+  function AddStatment(to,data){
+    const grid = document.getElementById(to);
+    
+      const div = document.createElement("div");
+      div.innerHTML = data.sop;
+      div.id = "grid-item";
+      grid.appendChild(div);
+      const div4 = document.createElement("div");
+      div4.id = "grid-item";
+      const a=document.createElement('a')
+      a.innerHTML="View Document"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(data.doc))
+      }
+      div4.appendChild(a);
+      grid.appendChild(div4);
+   
+  }
   function Sponsored(to, data) {
     const grid = document.getElementById(to);
     data.map((obj) => {
@@ -622,7 +751,10 @@ function createHref(id,link){
     data.map((obj) => {
       console.log("other", obj);
       const div = document.createElement("div");
-      div.innerHTML = obj.type;
+      if(obj.type==="normal")
+        div.innerHTML="Award/Honor"
+      else
+        div.innerHTML = obj.type;
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
@@ -736,9 +868,12 @@ function createHref(id,link){
         set("nationality", data.PersonalDetail.nationality);
         set("martialStatus", data.PersonalDetail.martialStatus);
         set("phone", data.PersonalDetail.phone || "-");
+        set("altphone", data.PersonalDetail.secPhone || "-"); 
+        set("email", data.PersonalDetail.email || "-");
         set("corAddress", data.PersonalDetail.corAddress);
         set("perAddress", data.PersonalDetail.perAddress);
         set("category", data.PersonalDetail.category);
+        set("feeAmount", data.feeAmount);
         // fetch(`/jobs/getById/${data.jobId}`).then((res) =>
         // res.json()
         // ).then(data => {
@@ -756,7 +891,10 @@ function createHref(id,link){
         publication(data.Publications);
         AddOtherInfo("otherInfo", data.OtherInfos);
         AddRef("refrees", data.Referees);
-        set("EduMode", data.eduMode);
+        set("EduMode", deg[data.eduMode]);
+        AddBestPapers("bestpapers",data.BestPapers)
+        AddStatment('statementOfPurpose',data.SOP)
+        AddPatents("patents",data.Patents)
         //general Questions
         set(
           "gone",

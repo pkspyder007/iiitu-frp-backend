@@ -75,7 +75,7 @@
   }
   .gridsop {
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px auto;
     grid-column-gap: 0;
     column-gap: 0;
   }
@@ -135,7 +135,7 @@
   }
   .gridOther {
     display: grid;
-    grid-template-columns: 165px 125px 125px 125px 125px;
+    grid-template-columns: 165px 125px 125px 125px 125px auto;
     grid-column-gap: 0;
     column-gap: 0;
   }
@@ -152,13 +152,18 @@
     #indexp{
       page-break-after: always;
     }
-    #otherInfo{
-      page-break-after: always;
-    }
+    
     #publications{
       page-break-after: auto;
     }
-    #statementOfPurpose{
+    
+    #DocumentChecklist{
+      page-break-before: always;
+    }
+    #otherInformation{
+      page-break-before: always;
+    }
+    #patents{
       page-break-after: always;
     }
   }
@@ -245,8 +250,12 @@
     <div id="corAddress" style="width: 150px; margin-right: 120px"></div>
   </div>
   <div id="inner-item">
-    <div id="ii1">9.Permanent Address</div>
+    <div id="ii1">11.Permanent Address</div>
     <div id="perAddress" style="width: 150px; margin-right: 120px"></div>
+  </div>
+  <div id="inner-item">
+    <div id="ii1">12.Pwd</div>
+    <div id="pwd" style="width: 150px; margin-right: 120px"></div>
   </div>
   <h2>Fee Details</h2>
   <div id="inner-item" style="margin-bottom: 15px">
@@ -309,6 +318,7 @@
       <div class="grid-item">Start</div>
       <div class="grid-item">End</div>
       <div class="grid-item">Outcome</div>
+      <div class="grid-item">Certificate</div>
     </div>
   </div>
   <h2 style="margin-top: 60px; font-size: 20px">Thesis Supervised</h2>
@@ -365,7 +375,7 @@
       </div>
     </div>
   </div>
-  <h2 style="margin-top: 80px">Other Information</h2>
+  <h2 id="otherInformation" style="margin-top: 80px">Other Information</h2>
   <div style="margin: auto; width: min-content">
     <div class="gridOther" id="otherInfo">
       <div class="grid-item">Type</div>
@@ -373,6 +383,7 @@
       <div class="grid-item">Awarding Organization</div>
       <div class="grid-item">Remarks</div>
       <div class="grid-item">Date</div>
+      <div class="grid-item">Certificate</div>
     </div>
   </div>
   <h2 style="margin-top: 80px;">Referees</h2>
@@ -415,7 +426,7 @@
   </div>
 
 
-  <h2 id="generalQuestions" style="margin-top: 100px;">General Questions</h2>
+  <h2 id="generalQuestions" style="margin-top: 300px;">General Questions</h2>
   <div>
     <div style="width: 90%">
       1. Has there been any break in your academic career? If so, give details
@@ -446,7 +457,7 @@
 
   <h2 id="DocumentChecklist" style="margin-top: 80px">Document Checklist</h2>
   <div style="margin: auto; width: min-content; margin-bottom: 20px">
-    <div class="grid2" >
+    <div id="documentChecklist" class="grid2" >
       <div class="grid-item">S. NO.</div>
       <div class="grid-item">Document Discription</div>
       <div class="grid-item">Yes/No</div>
@@ -487,12 +498,16 @@
       <div class="grid-item">Future Plan</div>
       <div class="grid-item" id="futurePlandoc"></div>
       <div class="grid-item" id="futurePlandocLink"></div>
+      <div class="grid-item">10</div>
+      <div class="grid-item">Publications </div>
+      <div class="grid-item" id="publicationsDoc"></div>
+      <div class="grid-item" id="publicationsDocLink"></div>
     </div>
   </div>
   <div style="top: 20px; right: 20px; position: absolute">
     <img id="per" src="" style="width: 200px; height: 250px" />
   </div>
-  <div style="font-size: 20px; font-weight: 600; margin-top: 200px;padding-top: 40px;">
+  <div style="font-size: 20px; font-weight: 600; margin-top: 120px;padding-top: 40px;">
     Declaration to be Signed by the Candidate
   </div>
   <div
@@ -550,6 +565,7 @@
   </div>
 </div>
 <script>
+  let documentChecklist=10;
   function getStaticUrl(link) {
   let str = link.split("uploads");
   let finalImage = str[1];
@@ -573,6 +589,26 @@ function createHref(id,link){
   return "YES"
 }
 
+function addToChecklist(name,doc){
+  documentChecklist++;
+  const div4 = document.createElement("div")
+  div4.classList.add("grid-item")
+  div4.innerHTML=documentChecklist
+  const div1 = document.createElement("div")
+  div1.classList.add("grid-item")
+  div1.innerHTML=name
+  const div2 = document.createElement("div")
+  div2.classList.add("grid-item")
+  div2.innerHTML= doc&&doc!==""?"YES":"NO"
+  const div3 = document.createElement("div")
+  div3.classList.add("grid-item")
+  div3.innerHTML= "-"
+  document.getElementById("documentChecklist").appendChild(div4)
+  document.getElementById("documentChecklist").appendChild(div1)
+  document.getElementById("documentChecklist").appendChild(div2)
+  document.getElementById("documentChecklist").appendChild(div3)
+  
+}
 const deg={
     'dual':"Dual Degree",
     'dphd':"Direct Phd",
@@ -602,6 +638,7 @@ const deg={
       div5.id = "grid-item";
       div5.innerHTML = obj.percentage || "-";
       grid.appendChild(div5);
+      
     });
   }
   function addExp(to, data) {
@@ -641,6 +678,7 @@ const deg={
       }
       div7.appendChild(a);
       grid.appendChild(div7);
+      addToChecklist(obj.org,obj.doc)
     });
   }
   function AddBestPapers(to,data){
@@ -668,6 +706,7 @@ const deg={
       }
       div4.appendChild(a);
       grid.appendChild(div4);
+      addToChecklist(obj.title,obj.doc)
     })
   }
   function AddPatents(to,data){
@@ -708,6 +747,7 @@ const deg={
       }
       div4.appendChild(a);
       grid.appendChild(div4);
+      addToChecklist("Statement of Purpose",data.doc)
    
   }
   function Sponsored(to, data) {
@@ -741,6 +781,16 @@ const deg={
       div7.id = "grid-item";
       div7.innerHTML = obj.outcome;
       grid.appendChild(div7);
+      const div8 = document.createElement("div");
+      const a=document.createElement('a')
+      a.innerHTML="View Document"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(obj.doc))
+      }
+      div8.appendChild(a);
+      grid.appendChild(div8);
+      addToChecklist(obj.title,obj.doc)
     });
   }
   function set(id, val) {
@@ -773,6 +823,16 @@ const deg={
       div5.id = "grid-item";
       div5.innerHTML = obj.date;
       grid.appendChild(div5);
+      const div6 = document.createElement("div");
+      const a=document.createElement('a')
+      a.innerHTML="View Document"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(obj.doc))
+      }
+      div6.appendChild(a);
+      grid.appendChild(div6);
+      addToChecklist(obj.title,obj.doc)
     });
   }
   function setDept(value) {
@@ -815,12 +875,19 @@ const deg={
     });
   }
   function publication(data) {
-    console.log(data);
+    console
     set("books", data[0]?.books || 0);
     set("ij", data[0]?.iJournals || 0);
     set("nj", data[0]?.nJournals || 0);
     set("ic", data[0]?.iConf || 0);
     set("nc", data[0]?.nConf || 0);
+    
+    set(
+          "publicationsDoc",
+          data[0]?.doc == "" || !data[0]?.doc
+            ?  createHref("publicationsDoc",null)
+            : createHref("publicationsDoc",data[0]?.doc)
+        );
   }
   function Thesis(app) {
     console.log(app);
@@ -874,6 +941,7 @@ const deg={
         set("perAddress", data.PersonalDetail.perAddress);
         set("category", data.PersonalDetail.category);
         set("feeAmount", data.feeAmount);
+        set("pwd",data.PersonalDetail.pwd==="NO"?"NO":"YES")
         // fetch(`/jobs/getById/${data.jobId}`).then((res) =>
         // res.json()
         // ).then(data => {

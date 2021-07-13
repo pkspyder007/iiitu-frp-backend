@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   Thesis.init({
     type: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     nameOfCandidate: {
       type: DataTypes.STRING,
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     regYear: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     finalViva: {
       type: DataTypes.TEXT,

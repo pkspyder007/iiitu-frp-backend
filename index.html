@@ -145,6 +145,12 @@
     grid-column-gap: 0;
     column-gap: 0;
   }
+  .gridThesis{
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-column-gap: 0;
+      column-gap: 0;
+    }
   @media print{
     #acadmicQualificatons{
       page-break-before: always;
@@ -166,6 +172,7 @@
     #patents{
       page-break-after: always;
     }
+    
   }
 </style>
 <div
@@ -323,33 +330,11 @@
   </div>
   <h2 style="margin-top: 60px; font-size: 20px">Thesis Supervised</h2>
   <div style="margin: auto; width: min-content">
-    <div class="gridResearch" id="thesis">
-      <div class="grid-item">Phd</div>
-      <div class="grid-item">PG</div>
+    <div class="gridThesis" id="thesis">
       <div class="grid-item">UG</div>
-      <div class="gridRInside">
-        <div class="grid-item">Status</div>
-        <div class="grid-item">No</div>
-        <div class="grid-item">Completed</div>
-        <div class="grid-item" id="pc">0</div>
-        <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="ppp">0</div>
-      </div>
-      <div class="gridRInside">
-        <div class="grid-item">Status</div>
-        <div class="grid-item">No</div>
-        <div class="grid-item">Completed</div>
-        <div class="grid-item" id="pgc">0</div>
-        <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="pgp">0</div>
-      </div>
-      <div class="gridRInside">
-        <div class="grid-item">Status</div>
-        <div class="grid-item">No</div>
-        <div class="grid-item">Completed</div>
-        <div class="grid-item" id="uc">0</div>
-        <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="up">0</div>
+      <div class="grid-item">PG</div>
+      <div class="grid-item">Phd</div>
+      <div class="grid-item">Document</div>
     </div>
   </div>
 
@@ -502,6 +487,22 @@
       <div class="grid-item">Publications </div>
       <div class="grid-item" id="publicationsDoc"></div>
       <div class="grid-item" id="publicationsDocLink"></div>
+      <div class="grid-item">11</div>
+      <div class="grid-item">Best Papers </div>
+      <div class="grid-item" id="BestPaperDoc"></div>
+      <div class="grid-item" id="BestPaperDocLink"></div>
+      <div class="grid-item">12</div>
+      <div class="grid-item">Academic Exeperience </div>
+      <div class="grid-item" id="AcadExpDoc"></div>
+      <div class="grid-item" id="AcadExpDocLink"></div>
+      <div class="grid-item">13</div>
+      <div class="grid-item">Sponsored Research Project</div>
+      <div class="grid-item" id="SponsoredResearchProjectDoc"></div>
+      <div class="grid-item" id="SponsoredResearchProjectDocLink"></div>
+      <div class="grid-item">14</div>
+      <div class="grid-item">Other Information</div>
+      <div class="grid-item" id="OtherInformantionDoc"></div>
+      <div class="grid-item" id="OtherInformantionDocLink"></div>
     </div>
   </div>
   <div style="top: 20px; right: 20px; position: absolute">
@@ -642,6 +643,7 @@ const deg={
     });
   }
   function addExp(to, data) {
+    let d=0
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
@@ -678,10 +680,27 @@ const deg={
       }
       div7.appendChild(a);
       grid.appendChild(div7);
-      addToChecklist(obj.org,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     });
+    if(d==0){
+      set(
+          "AcadExpDoc","YES"
+        );
+        set(
+          "AcadExpDocLink","-"
+        );
+    }else{
+      set(
+          "AcadExpDoc","NO"
+        );
+        set(
+          "AcadExpDocLink","-"
+        );
+    }
   }
   function AddBestPapers(to,data){
+    let d=0
     const grid = document.getElementById(to);
     data.map(obj=>{
       const div = document.createElement("div");
@@ -706,10 +725,27 @@ const deg={
       }
       div4.appendChild(a);
       grid.appendChild(div4);
-      addToChecklist(obj.title,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     })
+    if(d==0){
+      set(
+          "BestPaperDoc","YES"
+        );
+        set(
+          "BestPaperDocLink","-"
+        );
+    }else{
+      set(
+          "BestPaperDoc","NO"
+        );
+        set(
+          "BestPaperDocLink","-"
+        );
+    }
   }
   function AddPatents(to,data){
+    
     const grid = document.getElementById(to);
     data.map(obj=>{
       const div = document.createElement("div");
@@ -731,8 +767,8 @@ const deg={
     })
   }
   function AddStatment(to,data){
-    const grid = document.getElementById(to);
     
+    const grid = document.getElementById(to);
       const div = document.createElement("div");
       div.innerHTML = data.sop;
       div.id = "grid-item";
@@ -747,10 +783,10 @@ const deg={
       }
       div4.appendChild(a);
       grid.appendChild(div4);
-      addToChecklist("Statement of Purpose",data.doc)
-   
+      
   }
   function Sponsored(to, data) {
+    let d=0;
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
@@ -791,12 +827,30 @@ const deg={
       div8.appendChild(a);
       grid.appendChild(div8);
       addToChecklist(obj.title,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     });
+    if(d==0){
+      set(
+          "SponsoredResearchProjectDoc","YES"
+        );
+        set(
+          "SponsoredResearchProjectDocLink","-"
+        );
+    }else{
+      set(
+          "SponsoredResearchProjectDoc","NO"
+        );
+        set(
+          "SponsoredResearchProjectDocLink","-"
+        );
+    }
   }
   function set(id, val) {
     document.getElementById(id).innerHTML = val;
   }
   function AddOtherInfo(to, data) {
+    let d=0;
     const grid = document.getElementById(to);
     data.map((obj) => {
       console.log("other", obj);
@@ -832,8 +886,24 @@ const deg={
       }
       div6.appendChild(a);
       grid.appendChild(div6);
-      addToChecklist(obj.title,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     });
+    if(d==0){
+      set(
+          "OtherInformantionDoc","YES"
+        );
+        set(
+          "OtherInformantionDocLink","-"
+        );
+    }else{
+      set(
+          "OtherInformantionDoc","NO"
+        );
+        set(
+          "OtherInformantionDocLink","-"
+        );
+    }
   }
   function setDept(value) {
     const mapDeptName = {
@@ -889,28 +959,33 @@ const deg={
             : createHref("publicationsDoc",data[0]?.doc)
         );
   }
-  function Thesis(app) {
+  function Thesis(to,app) {
     console.log(app);
-    let phdc = 0,
-      phdp = 0,
-      ugc = 0,
-      ugp = 0,
-      pgc = 0,
-      pgp = 0;
+    const grid = document.getElementById(to);
     app.Theses?.map((obj) => {
-      if (obj.status === "completed" && obj.type == "PHD") phdc++;
-      else if (obj.status === "" && obj.type == "PHD") phdp++;
-      if (obj.status === "completed" && obj.type == "PG") pgc++;
-      else if (obj.status === "" && obj.type == "PG") pgp++;
-      if (obj.status === "completed" && obj.type == "UG") ugc++;
-      else if (obj.status === "" && obj.type == "UG") ugp++;
+      const div = document.createElement("div");
+      div.innerHTML = obj.nameOfCandidate;
+      div.id = "grid-item";
+      grid.appendChild(div);
+      const div2 = document.createElement("div");
+      div2.id = "grid-item";
+      div2.innerHTML = obj.insitute;
+      grid.appendChild(div2);
+      const div3 = document.createElement("div");
+      div3.id = "grid-item";
+      div3.innerHTML = obj.finalViva;
+      grid.appendChild(div3);
+      const div6 = document.createElement("div");
+      const a=document.createElement('a')
+      a.innerHTML="View Document"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(obj.doc))
+      }
+      div6.appendChild(a);
+      grid.appendChild(div6);
     });
-    set("pc", phdc);
-    set("ppp", phdp);
-    //set('uc',ugc)
-    //set('up',ugp)
-    set("pgc", pgc);
-    set("pgp", pgp);
+    
   }
   function callApi(id) {
     //alert("hi")
@@ -954,7 +1029,7 @@ const deg={
         addTable("acad", data.AcadQualifications);
         addExp("acadexp", data.AcadExperiences);
         addExp("indexp", data.IndustryExps);
-        Thesis(data);
+        Thesis("thesis",data);
         Sponsored("sop", data.Research);
         publication(data.Publications);
         AddOtherInfo("otherInfo", data.OtherInfos);

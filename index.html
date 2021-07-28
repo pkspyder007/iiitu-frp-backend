@@ -620,19 +620,19 @@ const deg={
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.education;
+      div.innerHTML = obj?.education||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.subject;
+      div2.innerHTML = obj?.subject||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.institution;
+      div3.innerHTML = obj?.institution||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.year;
+      div4.innerHTML = obj?.year||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
@@ -647,28 +647,28 @@ const deg={
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.org;
+      div.innerHTML = obj?.org||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.designation;
+      div2.innerHTML = obj?.designation||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.from;
+      div3.innerHTML = obj?.from||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.to;
+      div4.innerHTML = obj?.to||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.salary;
+      div5.innerHTML = obj?.salary||"";
       grid.appendChild(div5);
       const div6 = document.createElement("div");
       div6.id = "grid-item";
-      div6.innerHTML = obj.natureOfDuties;
+      div6.innerHTML = obj?.natureOfDuties||"";
       grid.appendChild(div6);
       const div7 = document.createElement("div");
       div7.id = "grid-item";
@@ -705,16 +705,16 @@ const deg={
     const grid = document.getElementById(to);
     data.map(obj=>{
       const div = document.createElement("div");
-      div.innerHTML = obj.title;
+      div.innerHTML = obj?.title||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.yearOfPub;
+      div2.innerHTML = obj?.yearOfPub||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.publisher;
+      div3.innerHTML = obj?.publisher||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
       div4.id = "grid-item";
@@ -722,7 +722,7 @@ const deg={
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div4.appendChild(a);
       grid.appendChild(div4);
@@ -750,20 +750,20 @@ const deg={
     const grid = document.getElementById(to);
     data.map(obj=>{
       const div = document.createElement("div");
-      div.innerHTML = obj.name;
+      div.innerHTML = obj?.name;
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.year;
+      div2.innerHTML = obj?.year;
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.num;
+      div3.innerHTML = obj?.num;
       grid.appendChild(div3);
       const div4 = document.createElement("div");
       div4.id = "grid-item";
-      div4.innerHTML = obj.status;
+      div4.innerHTML = obj?.status;
       grid.appendChild(div4);
     })
   }
@@ -771,7 +771,7 @@ const deg={
     
     const grid = document.getElementById(to);
       const div = document.createElement("div");
-      div.innerHTML = data.sop;
+      div.innerHTML = data?.sop||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div4 = document.createElement("div");
@@ -780,7 +780,7 @@ const deg={
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(data.doc))
+        window.open(getStaticUrl(data?.doc))
       }
       div4.appendChild(a);
       grid.appendChild(div4);
@@ -791,39 +791,39 @@ const deg={
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.title;
+      div.innerHTML = obj?.title||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.sponsor;
+      div2.innerHTML = obj?.sponsor||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.amount;
+      div3.innerHTML = obj?.amount||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.duration;
+      div4.innerHTML = obj?.duration||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.start;
+      div5.innerHTML = obj?.start||"";
       grid.appendChild(div5);
       const div6 = document.createElement("div");
       div6.id = "grid-item";
-      div6.innerHTML = obj.end;
+      div6.innerHTML = obj?.end||"";
       grid.appendChild(div6);
       const div7 = document.createElement("div");
       div7.id = "grid-item";
-      div7.innerHTML = obj.outcome;
+      div7.innerHTML = obj?.outcome||"";
       grid.appendChild(div7);
       const div8 = document.createElement("div");
       const a=document.createElement('a')
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div8.appendChild(a);
       grid.appendChild(div8);
@@ -847,7 +847,7 @@ const deg={
     }*/
   }
   function set(id, val) {
-    document.getElementById(id).innerHTML = val;
+    document.getElementById(id)?.innerHTML = val||"";
   }
   function AddOtherInfo(to, data) {
     let d=0;
@@ -858,31 +858,31 @@ const deg={
       if(obj.type==="normal")
         div.innerHTML="Award/Honor"
       else
-        div.innerHTML = obj.type;
+        div.innerHTML = obj?.type||""
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.title;
+      div2.innerHTML = obj?.title||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.by;
+      div3.innerHTML = obj?.by||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.amount;
+      div4.innerHTML = obj?.amount||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.date;
+      div5.innerHTML = obj?.date||"";
       grid.appendChild(div5);
       const div6 = document.createElement("div");
       const a=document.createElement('a')
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div6.appendChild(a);
       grid.appendChild(div6);
@@ -923,24 +923,24 @@ const deg={
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.name;
+      div.innerHTML = obj?.name||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.designation;
+      div2.innerHTML = obj?.designation||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.corAddress;
+      div3.innerHTML = obj?.corAddress||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.phone;
+      div4.innerHTML = obj?.phone||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.email;
+      div5.innerHTML = obj?.email||"";
       grid.appendChild(div5);
     });
   }
@@ -964,23 +964,23 @@ const deg={
     const grid = document.getElementById(to);
     app.Theses?.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.nameOfCandidate;
+      div.innerHTML = obj?.nameOfCandidate||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.insitute;
+      div2.innerHTML = obj?.insitute||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.finalViva;
+      div3.innerHTML = obj?.finalViva||"";
       grid.appendChild(div3);
       const div6 = document.createElement("div");
       const a=document.createElement('a')
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div6.appendChild(a);
       grid.appendChild(div6);
@@ -1026,17 +1026,17 @@ const deg={
         // }).catch((err) => {
         // console.log(err)
         // })
-        addTable("acad", data.AcadQualifications);
-        addExp("acadexp", data.AcadExperiences);
-        addExp("indexp", data.IndustryExps);
+        addTable("acad", data?.AcadQualifications);
+        addExp("acadexp", data?.AcadExperiences);
+        addExp("indexp", data?.IndustryExps);
         Thesis("thesis",data);
-        Sponsored("sop", data.Research);
-        publication(data.Publications);
-        AddOtherInfo("otherInfo", data.OtherInfos);
-        AddRef("refrees", data.Referees);
+        Sponsored("sop", data?.Research);
+        publication(data?.Publications);
+        AddOtherInfo("otherInfo", data?.OtherInfos);
+        AddRef("refrees", data?.Referees);
         set("EduMode", deg[data.eduMode]);
-        AddBestPapers("bestpapers",data.BestPapers)
-        AddStatment('statementOfPurpose',data.SOP)
+        AddBestPapers("bestpapers",data?.BestPapers)
+        AddStatment('statementOfPurpose',data?.SOP)
         AddPatents("patents",data.Patents)
         //general Questions
         set(

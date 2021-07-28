@@ -768,7 +768,9 @@ const deg={
     })
   }
   function AddStatment(to,data){
-    
+    if(!data?.sop){
+      return
+    }
     const grid = document.getElementById(to);
       const div = document.createElement("div");
       div.innerHTML = data?.sop||"";

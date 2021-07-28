@@ -188,7 +188,7 @@
     class="logo"
     src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png"
   />
-  <h1>Indain Institute of Information Technology Una</h1>
+  <h1>Indian Institute of Information Technology Una</h1>
   <h1>Himachal Pradesh</h1>
   <h1 style="font-size: 15px; font-weight: 500">
     (An Institute of National Importation Under MoE)
@@ -266,7 +266,7 @@
   </div>
   <h2>Fee Details</h2>
   <div id="inner-item" style="margin-bottom: 15px">
-    <div id="ii1">1.Tansaction Id</div>
+    <div id="ii1">1.Transaction Id</div>
     <div id="tid" style="width: 150px; margin-right: 120px"></div>
   </div>
   <div id="inner-item" style="margin-bottom: 15px">
@@ -290,7 +290,7 @@
       <div class="grid-item">CGPA/Marks</div>
     </div>
   </div>
-  <h2 style="margin-top: 130px">Academic Exeperience</h2>
+  <h2 style="margin-top: 130px">Academic Experience</h2>
   <div style="margin: auto; width: min-content">
     <div class="grid1" id="acadexp">
       <div class="grid-item">University/Organization</div>
@@ -444,7 +444,7 @@
   <div style="margin: auto; width: min-content; margin-bottom: 20px">
     <div id="documentChecklist" class="grid2" >
       <div class="grid-item">S. NO.</div>
-      <div class="grid-item">Document Discription</div>
+      <div class="grid-item">Document Description</div>
       <div class="grid-item">Yes/No</div>
       <div class="grid-item">Document Link</div>
       <div class="grid-item">1</div>
@@ -487,12 +487,12 @@
       <div class="grid-item">Publications </div>
       <div class="grid-item" id="publicationsDoc"></div>
       <div class="grid-item" id="publicationsDocLink"></div>
-      <div class="grid-item">11</div>
+      <!--<div class="grid-item">11</div>
       <div class="grid-item">Best Papers </div>
       <div class="grid-item" id="BestPaperDoc"></div>
       <div class="grid-item" id="BestPaperDocLink"></div>
       <div class="grid-item">12</div>
-      <div class="grid-item">Academic Exeperience </div>
+      <div class="grid-item">Academic Experience </div>
       <div class="grid-item" id="AcadExpDoc"></div>
       <div class="grid-item" id="AcadExpDocLink"></div>
       <div class="grid-item">13</div>
@@ -502,7 +502,7 @@
       <div class="grid-item">14</div>
       <div class="grid-item">Other Information</div>
       <div class="grid-item" id="OtherInformantionDoc"></div>
-      <div class="grid-item" id="OtherInformantionDocLink"></div>
+      <div class="grid-item" id="OtherInformantionDocLink"></div>-->
     </div>
   </div>
   <div style="top: 20px; right: 20px; position: absolute">
@@ -519,7 +519,7 @@
       font-size: 17px;
     "
   >
-    I hearby declare that the entries in this form are true to the best of my
+    I hearby, declare that the entries in this form are true to the best of my
     knowledge and belief. If at any stage or time, I am found to have concealed
     any material/information or given any false details, my appointment shall be
     liable to be summarily terminated without any notice or compensation.
@@ -559,7 +559,7 @@
       This form(duly signed) along with all the necessary self attested
       documents must reach to
       <span style="font-weight: 600"
-        >&quot;The Registrar, IIIT Una, Central Block, NIT Campus, Hamirpur,H.P.
+        >&quot;The Registrar, IIIT Una, Central Block, NIT Campus, Hamirpur, H.P.
         177005&quot;</span
       >
     </div>
@@ -590,7 +590,7 @@ function createHref(id,link){
   return "YES"
 }
 
-function addToChecklist(name,doc){
+function addToChecklis(name,doc){
   documentChecklist++;
   const div4 = document.createElement("div")
   div4.classList.add("grid-item")
@@ -683,7 +683,8 @@ const deg={
       if(obj?.doc!=="")
         d++;
     });
-    if(d==0){
+  /* if(d==0)
+   {
       set(
           "AcadExpDoc","YES"
         );
@@ -697,7 +698,7 @@ const deg={
         set(
           "AcadExpDocLink","-"
         );
-    }
+    }*/
   }
   function AddBestPapers(to,data){
     let d=0
@@ -728,7 +729,7 @@ const deg={
       if(obj?.doc!=="")
         d++;
     })
-    if(d==0){
+   /* if(d==0){
       set(
           "BestPaperDoc","YES"
         );
@@ -742,7 +743,7 @@ const deg={
         set(
           "BestPaperDocLink","-"
         );
-    }
+    }*/
   }
   function AddPatents(to,data){
     
@@ -826,11 +827,10 @@ const deg={
       }
       div8.appendChild(a);
       grid.appendChild(div8);
-      addToChecklist(obj.title,obj.doc)
       if(obj?.doc!=="")
         d++;
     });
-    if(d==0){
+    /*if(d==0){
       set(
           "SponsoredResearchProjectDoc","YES"
         );
@@ -844,7 +844,7 @@ const deg={
         set(
           "SponsoredResearchProjectDocLink","-"
         );
-    }
+    }*/
   }
   function set(id, val) {
     document.getElementById(id).innerHTML = val;
@@ -889,7 +889,7 @@ const deg={
       if(obj?.doc!=="")
         d++;
     });
-    if(d==0){
+    /*if(d==0){
       set(
           "OtherInformantionDoc","YES"
         );
@@ -903,7 +903,7 @@ const deg={
         set(
           "OtherInformantionDocLink","-"
         );
-    }
+    }*/
   }
   function setDept(value) {
     const mapDeptName = {

@@ -523,19 +523,19 @@ exports.addGeneral = async (req, res) => {
 exports.addReferees = async (req, res) => {
   console.log(req.body);
   try {
-    const existsCheck = await db.Referee.findOne({
-      where: { email: req.body.email },
-    });
-    if (existsCheck) {
-      return res.status(400).json({
-        msg: "Data already exists.",
-        errors: [
-          {
-            message: "You have already filled the details for this Referee.",
-          },
-        ],
-      });
-    }
+    // const existsCheck = await db.Referee.findOne({
+    //   where: { email: req.body.email },
+    // });
+    // if (existsCheck) {
+    //   return res.status(400).json({
+    //     msg: "Data already exists.",
+    //     errors: [
+    //       {
+    //         message: "You have already filled the details for this Referee.",
+    //       },
+    //     ],
+    //   });
+    // }
 
     const data = await db.Referee.create({ ...req.body, appId: req.params.id });
     res.status(201).json({

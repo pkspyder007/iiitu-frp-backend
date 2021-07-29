@@ -145,6 +145,12 @@
     grid-column-gap: 0;
     column-gap: 0;
   }
+  .gridThesis{
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-column-gap: 0;
+      column-gap: 0;
+    }
   @media print{
     #acadmicQualificatons{
       page-break-before: always;
@@ -166,6 +172,7 @@
     #patents{
       page-break-after: always;
     }
+    
   }
 </style>
 <div
@@ -181,7 +188,7 @@
     class="logo"
     src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Iiit-una-logo.png/220px-Iiit-una-logo.png"
   />
-  <h1>Indain Institute of Information Technology Una</h1>
+  <h1>Indian Institute of Information Technology Una</h1>
   <h1>Himachal Pradesh</h1>
   <h1 style="font-size: 15px; font-weight: 500">
     (An Institute of National Importation Under MoE)
@@ -259,7 +266,7 @@
   </div>
   <h2>Fee Details</h2>
   <div id="inner-item" style="margin-bottom: 15px">
-    <div id="ii1">1.Tansaction Id</div>
+    <div id="ii1">1.Transaction Id</div>
     <div id="tid" style="width: 150px; margin-right: 120px"></div>
   </div>
   <div id="inner-item" style="margin-bottom: 15px">
@@ -283,7 +290,7 @@
       <div class="grid-item">CGPA/Marks</div>
     </div>
   </div>
-  <h2 style="margin-top: 130px">Academic Exeperience</h2>
+  <h2 style="margin-top: 130px">Academic Experience</h2>
   <div style="margin: auto; width: min-content">
     <div class="grid1" id="acadexp">
       <div class="grid-item">University/Organization</div>
@@ -323,33 +330,11 @@
   </div>
   <h2 style="margin-top: 60px; font-size: 20px">Thesis Supervised</h2>
   <div style="margin: auto; width: min-content">
-    <div class="gridResearch" id="thesis">
-      <div class="grid-item">Phd</div>
-      <div class="grid-item">PG</div>
+    <div class="gridThesis" id="thesis">
       <div class="grid-item">UG</div>
-      <div class="gridRInside">
-        <div class="grid-item">Status</div>
-        <div class="grid-item">No</div>
-        <div class="grid-item">Completed</div>
-        <div class="grid-item" id="pc">0</div>
-        <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="ppp">0</div>
-      </div>
-      <div class="gridRInside">
-        <div class="grid-item">Status</div>
-        <div class="grid-item">No</div>
-        <div class="grid-item">Completed</div>
-        <div class="grid-item" id="pgc">0</div>
-        <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="pgp">0</div>
-      </div>
-      <div class="gridRInside">
-        <div class="grid-item">Status</div>
-        <div class="grid-item">No</div>
-        <div class="grid-item">Completed</div>
-        <div class="grid-item" id="uc">0</div>
-        <div class="grid-item">In Progress</div>
-        <div class="grid-item" id="up">0</div>
+      <div class="grid-item">PG</div>
+      <div class="grid-item">Phd</div>
+      <div class="grid-item">Document</div>
     </div>
   </div>
 
@@ -459,7 +444,7 @@
   <div style="margin: auto; width: min-content; margin-bottom: 20px">
     <div id="documentChecklist" class="grid2" >
       <div class="grid-item">S. NO.</div>
-      <div class="grid-item">Document Discription</div>
+      <div class="grid-item">Document Description</div>
       <div class="grid-item">Yes/No</div>
       <div class="grid-item">Document Link</div>
       <div class="grid-item">1</div>
@@ -502,6 +487,22 @@
       <div class="grid-item">Publications </div>
       <div class="grid-item" id="publicationsDoc"></div>
       <div class="grid-item" id="publicationsDocLink"></div>
+      <!--<div class="grid-item">11</div>
+      <div class="grid-item">Best Papers </div>
+      <div class="grid-item" id="BestPaperDoc"></div>
+      <div class="grid-item" id="BestPaperDocLink"></div>
+      <div class="grid-item">12</div>
+      <div class="grid-item">Academic Experience </div>
+      <div class="grid-item" id="AcadExpDoc"></div>
+      <div class="grid-item" id="AcadExpDocLink"></div>
+      <div class="grid-item">13</div>
+      <div class="grid-item">Sponsored Research Project</div>
+      <div class="grid-item" id="SponsoredResearchProjectDoc"></div>
+      <div class="grid-item" id="SponsoredResearchProjectDocLink"></div>
+      <div class="grid-item">14</div>
+      <div class="grid-item">Other Information</div>
+      <div class="grid-item" id="OtherInformantionDoc"></div>
+      <div class="grid-item" id="OtherInformantionDocLink"></div>-->
     </div>
   </div>
   <div style="top: 20px; right: 20px; position: absolute">
@@ -518,7 +519,7 @@
       font-size: 17px;
     "
   >
-    I hearby declare that the entries in this form are true to the best of my
+    I hearby, declare that the entries in this form are true to the best of my
     knowledge and belief. If at any stage or time, I am found to have concealed
     any material/information or given any false details, my appointment shall be
     liable to be summarily terminated without any notice or compensation.
@@ -558,7 +559,7 @@
       This form(duly signed) along with all the necessary self attested
       documents must reach to
       <span style="font-weight: 600"
-        >&quot;The Registrar, IIIT Una, Central Block, NIT Campus, Hamirpur,H.P.
+        >&quot;The Registrar, IIIT Una, Central Block, NIT Campus, Hamirpur, H.P.
         177005&quot;</span
       >
     </div>
@@ -589,7 +590,7 @@ function createHref(id,link){
   return "YES"
 }
 
-function addToChecklist(name,doc){
+function addToChecklis(name,doc){
   documentChecklist++;
   const div4 = document.createElement("div")
   div4.classList.add("grid-item")
@@ -619,19 +620,19 @@ const deg={
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.education;
+      div.innerHTML = obj?.education||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.subject;
+      div2.innerHTML = obj?.subject||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.institution;
+      div3.innerHTML = obj?.institution||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.year;
+      div4.innerHTML = obj?.year||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
@@ -642,31 +643,32 @@ const deg={
     });
   }
   function addExp(to, data) {
+    let d=0
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.org;
+      div.innerHTML = obj?.org||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.designation;
+      div2.innerHTML = obj?.designation||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.from;
+      div3.innerHTML = obj?.from||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.to;
+      div4.innerHTML = obj?.to||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.salary;
+      div5.innerHTML = obj?.salary||"";
       grid.appendChild(div5);
       const div6 = document.createElement("div");
       div6.id = "grid-item";
-      div6.innerHTML = obj.natureOfDuties;
+      div6.innerHTML = obj?.natureOfDuties||"";
       grid.appendChild(div6);
       const div7 = document.createElement("div");
       div7.id = "grid-item";
@@ -678,23 +680,41 @@ const deg={
       }
       div7.appendChild(a);
       grid.appendChild(div7);
-      addToChecklist(obj.org,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     });
+  /* if(d==0)
+   {
+      set(
+          "AcadExpDoc","YES"
+        );
+        set(
+          "AcadExpDocLink","-"
+        );
+    }else{
+      set(
+          "AcadExpDoc","NO"
+        );
+        set(
+          "AcadExpDocLink","-"
+        );
+    }*/
   }
   function AddBestPapers(to,data){
+    let d=0
     const grid = document.getElementById(to);
     data.map(obj=>{
       const div = document.createElement("div");
-      div.innerHTML = obj.title;
+      div.innerHTML = obj?.title||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.yearOfPub;
+      div2.innerHTML = obj?.yearOfPub||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.publisher;
+      div3.innerHTML = obj?.publisher||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
       div4.id = "grid-item";
@@ -702,39 +722,58 @@ const deg={
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div4.appendChild(a);
       grid.appendChild(div4);
-      addToChecklist(obj.title,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     })
+   /* if(d==0){
+      set(
+          "BestPaperDoc","YES"
+        );
+        set(
+          "BestPaperDocLink","-"
+        );
+    }else{
+      set(
+          "BestPaperDoc","NO"
+        );
+        set(
+          "BestPaperDocLink","-"
+        );
+    }*/
   }
   function AddPatents(to,data){
+    
     const grid = document.getElementById(to);
     data.map(obj=>{
       const div = document.createElement("div");
-      div.innerHTML = obj.name;
+      div.innerHTML = obj?.name;
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.year;
+      div2.innerHTML = obj?.year;
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.num;
+      div3.innerHTML = obj?.num;
       grid.appendChild(div3);
       const div4 = document.createElement("div");
       div4.id = "grid-item";
-      div4.innerHTML = obj.status;
+      div4.innerHTML = obj?.status;
       grid.appendChild(div4);
     })
   }
   function AddStatment(to,data){
+    if(!data?.sop){
+      return
+    }
     const grid = document.getElementById(to);
-    
       const div = document.createElement("div");
-      div.innerHTML = data.sop;
+      div.innerHTML = data?.sop||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div4 = document.createElement("div");
@@ -743,60 +782,77 @@ const deg={
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(data.doc))
+        window.open(getStaticUrl(data?.doc))
       }
       div4.appendChild(a);
       grid.appendChild(div4);
-      addToChecklist("Statement of Purpose",data.doc)
-   
+      
   }
   function Sponsored(to, data) {
+    let d=0;
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.title;
+      div.innerHTML = obj?.title||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.sponsor;
+      div2.innerHTML = obj?.sponsor||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.amount;
+      div3.innerHTML = obj?.amount||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.duration;
+      div4.innerHTML = obj?.duration||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.start;
+      div5.innerHTML = obj?.start||"";
       grid.appendChild(div5);
       const div6 = document.createElement("div");
       div6.id = "grid-item";
-      div6.innerHTML = obj.end;
+      div6.innerHTML = obj?.end||"";
       grid.appendChild(div6);
       const div7 = document.createElement("div");
       div7.id = "grid-item";
-      div7.innerHTML = obj.outcome;
+      div7.innerHTML = obj?.outcome||"";
       grid.appendChild(div7);
       const div8 = document.createElement("div");
       const a=document.createElement('a')
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div8.appendChild(a);
       grid.appendChild(div8);
-      addToChecklist(obj.title,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     });
+    /*if(d==0){
+      set(
+          "SponsoredResearchProjectDoc","YES"
+        );
+        set(
+          "SponsoredResearchProjectDocLink","-"
+        );
+    }else{
+      set(
+          "SponsoredResearchProjectDoc","NO"
+        );
+        set(
+          "SponsoredResearchProjectDocLink","-"
+        );
+    }*/
   }
   function set(id, val) {
-    document.getElementById(id).innerHTML = val;
+    document.getElementById(id).innerHTML = val||"";
   }
   function AddOtherInfo(to, data) {
+    let d=0;
     const grid = document.getElementById(to);
     data.map((obj) => {
       console.log("other", obj);
@@ -804,36 +860,52 @@ const deg={
       if(obj.type==="normal")
         div.innerHTML="Award/Honor"
       else
-        div.innerHTML = obj.type;
+        div.innerHTML = obj?.type||""
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.title;
+      div2.innerHTML = obj?.title||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.by;
+      div3.innerHTML = obj?.by||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.amount;
+      div4.innerHTML = obj?.amount||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.date;
+      div5.innerHTML = obj?.date||"";
       grid.appendChild(div5);
       const div6 = document.createElement("div");
       const a=document.createElement('a')
       a.innerHTML="View Document"
       a.href="#"
       a.onclick=()=>{
-        window.open(getStaticUrl(obj.doc))
+        window.open(getStaticUrl(obj?.doc))
       }
       div6.appendChild(a);
       grid.appendChild(div6);
-      addToChecklist(obj.title,obj.doc)
+      if(obj?.doc!=="")
+        d++;
     });
+    /*if(d==0){
+      set(
+          "OtherInformantionDoc","YES"
+        );
+        set(
+          "OtherInformantionDocLink","-"
+        );
+    }else{
+      set(
+          "OtherInformantionDoc","NO"
+        );
+        set(
+          "OtherInformantionDocLink","-"
+        );
+    }*/
   }
   function setDept(value) {
     const mapDeptName = {
@@ -853,24 +925,24 @@ const deg={
     const grid = document.getElementById(to);
     data.map((obj) => {
       const div = document.createElement("div");
-      div.innerHTML = obj.name;
+      div.innerHTML = obj?.name||"";
       div.id = "grid-item";
       grid.appendChild(div);
       const div2 = document.createElement("div");
       div2.id = "grid-item";
-      div2.innerHTML = obj.designation;
+      div2.innerHTML = obj?.designation||"";
       grid.appendChild(div2);
       const div3 = document.createElement("div");
       div3.id = "grid-item";
-      div3.innerHTML = obj.corAddress;
+      div3.innerHTML = obj?.corAddress||"";
       grid.appendChild(div3);
       const div4 = document.createElement("div");
-      div4.innerHTML = obj.phone;
+      div4.innerHTML = obj?.phone||"";
       div4.id = "grid-item";
       grid.appendChild(div4);
       const div5 = document.createElement("div");
       div5.id = "grid-item";
-      div5.innerHTML = obj.email;
+      div5.innerHTML = obj?.email||"";
       grid.appendChild(div5);
     });
   }
@@ -889,28 +961,33 @@ const deg={
             : createHref("publicationsDoc",data[0]?.doc)
         );
   }
-  function Thesis(app) {
+  function Thesis(to,app) {
     console.log(app);
-    let phdc = 0,
-      phdp = 0,
-      ugc = 0,
-      ugp = 0,
-      pgc = 0,
-      pgp = 0;
+    const grid = document.getElementById(to);
     app.Theses?.map((obj) => {
-      if (obj.status === "completed" && obj.type == "PHD") phdc++;
-      else if (obj.status === "" && obj.type == "PHD") phdp++;
-      if (obj.status === "completed" && obj.type == "PG") pgc++;
-      else if (obj.status === "" && obj.type == "PG") pgp++;
-      if (obj.status === "completed" && obj.type == "UG") ugc++;
-      else if (obj.status === "" && obj.type == "UG") ugp++;
+      const div = document.createElement("div");
+      div.innerHTML = obj?.nameOfCandidate||"";
+      div.id = "grid-item";
+      grid.appendChild(div);
+      const div2 = document.createElement("div");
+      div2.id = "grid-item";
+      div2.innerHTML = obj?.insitute||"";
+      grid.appendChild(div2);
+      const div3 = document.createElement("div");
+      div3.id = "grid-item";
+      div3.innerHTML = obj?.finalViva||"";
+      grid.appendChild(div3);
+      const div6 = document.createElement("div");
+      const a=document.createElement('a')
+      a.innerHTML="View Document"
+      a.href="#"
+      a.onclick=()=>{
+        window.open(getStaticUrl(obj?.doc))
+      }
+      div6.appendChild(a);
+      grid.appendChild(div6);
     });
-    set("pc", phdc);
-    set("ppp", phdp);
-    //set('uc',ugc)
-    //set('up',ugp)
-    set("pgc", pgc);
-    set("pgp", pgp);
+    
   }
   function callApi(id) {
     //alert("hi")
@@ -951,17 +1028,17 @@ const deg={
         // }).catch((err) => {
         // console.log(err)
         // })
-        addTable("acad", data.AcadQualifications);
-        addExp("acadexp", data.AcadExperiences);
-        addExp("indexp", data.IndustryExps);
-        Thesis(data);
-        Sponsored("sop", data.Research);
-        publication(data.Publications);
-        AddOtherInfo("otherInfo", data.OtherInfos);
-        AddRef("refrees", data.Referees);
+        addTable("acad", data?.AcadQualifications);
+        addExp("acadexp", data?.AcadExperiences);
+        addExp("indexp", data?.IndustryExps);
+        Thesis("thesis",data);
+        Sponsored("sop", data?.Research);
+        publication(data?.Publications);
+        AddOtherInfo("otherInfo", data?.OtherInfos);
+        AddRef("refrees", data?.Referees);
         set("EduMode", deg[data.eduMode]);
-        AddBestPapers("bestpapers",data.BestPapers)
-        AddStatment('statementOfPurpose',data.SOP)
+        AddBestPapers("bestpapers",data?.BestPapers)
+        AddStatment('statementOfPurpose',data?.SOP)
         AddPatents("patents",data.Patents)
         //general Questions
         set(

@@ -751,9 +751,15 @@ exports.finalSubmit = async (req, res) => {
       return res.status(500).json({
         errors: [{ message: "Something went wrong." }],
       });
-    }
+    };
+
+    const app = await db.Application.findOne({
+      where: { id: req.params.id },
+    });
     // add email trigger later
-    const user = await db.User.findById(data.userId);
+    const user = await db.User.findOne({
+      where: { id: app.userId },
+    });
 
     sendEmail(user.email, "IIIT Una | Recruitment | Application Successfully Submitted.", `
     <p>Dear Candidate!</p> 

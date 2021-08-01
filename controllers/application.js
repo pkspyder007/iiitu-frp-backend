@@ -1,3 +1,8 @@
+
+const PDFDocument = require("pdfkit");
+const fs = require("fs");
+const path = require("path");
+const { sendEmail } = require("../utils/email");
 const Validator = require("fastest-validator");
 const db = require("../models/index");
 const {
@@ -748,6 +753,13 @@ exports.finalSubmit = async (req, res) => {
       });
     }
     // add email trigger later
+    const user = await db.User.findById(data.userId);
+
+    sendEmail(user.email, "IIIT Una | Recruitment | Application Successfully Submitted.", `
+    <p>Dear Candidate!</p> 
+    <p>Your application has been successfully submitted.</p> 
+    <p>Your application no. is: ${data.refNum}. Kindly keep visiting the website <a href="www.iiitu.ac.in">www.iiitu.ac.in</a> for future updates.</p>
+    `)
     return res.json({ message: "Success." });
   } catch (error) {
     let errors = [{ message: error.message }];
@@ -757,9 +769,6 @@ exports.finalSubmit = async (req, res) => {
   }
 };
 
-const PDFDocument = require("pdfkit");
-const fs = require("fs");
-const path = require("path");
 
 exports.generatePDF = async (req, res) => {
   try {

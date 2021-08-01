@@ -764,7 +764,7 @@ exports.finalSubmit = async (req, res) => {
     sendEmail(user.email, "IIIT Una | Recruitment | Application Successfully Submitted.", `
     <p>Dear Candidate!</p> 
     <p>Your application has been successfully submitted.</p> 
-    <p>Your application no. is: ${data.refNum}. Kindly keep visiting the website <a href="www.iiitu.ac.in">www.iiitu.ac.in</a> for future updates.</p>
+    <p>Your application no. is: ${app.refNum}. Kindly keep visiting the website <a href="www.iiitu.ac.in">www.iiitu.ac.in</a> for future updates.</p>
     `)
     return res.json({ message: "Success." });
   } catch (error) {

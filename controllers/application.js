@@ -637,7 +637,12 @@ exports.lockApp = async (req, res) => {
     const totals = await db.Application.findAll({ where: { dept: app.dept } });
     let d = new Date();
     let n = d.getFullYear();
-    const offsetNum = parseInt(app.appId, 10) +1000;
+    console.log('*************************');
+    console.log("app: ", app);
+    const offsetNum = parseInt(req.params.id, 10) + 1000;
+    console.log('*************************');
+    console.log("refNum: ", offsetNum);
+    console.log('*************************');
     let refNum = `AP${n}-${app.dept.toUpperCase()}-${offsetNum}`;
     // console.log("---------------------------------");
     // console.log(refNum);
